@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Small Pieces · Share Mind</title>
+<meta name="description" content="A little space to arrange images into a feeling. A Share Mind experiment in parts and the whole.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232d4cdc'/%3E%3Cpath d='M6 9h13v15H6z' fill='white'/%3E%3Cpath d='m18 5 9 4-6 14-9-4z' fill='%23ffc947'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css"><script src="app.js" defer></script>
+</head>
+<body>
+<header><a class="brand" href="./"><span class="mark" aria-hidden="true">▧</span> Small Pieces<span class="course">SHARE MIND / WEEK 3</span></a><span id="status" role="status">Saved on this browser</span></header>
+<main>
+<section class="intro"><div><p class="eyebrow">PARTS → A WHOLE</p><h1>A little space for a feeling.</h1><p>Move the same pieces. Find a different meaning.</p></div><button id="export" class="quiet">Export JSON ↗</button></section>
+<div class="workspace">
+<aside>
+<h2>Your pieces</h2><p class="muted">Add a few images, then make them your own.</p>
+<label class="upload" for="upload">＋ Add images<input id="upload" type="file" accept="image/png,image/jpeg,image/webp" multiple></label>
+<p class="tiny">PNG, JPG or WebP · up to 12 pieces<br>Transparent PNGs work nicely.</p>
+<div id="starterSection" hidden><h3>A few to start with</h3><div id="starters" class="starters"></div><p class="tiny">AI-generated collage materials, made in advance. No live AI or paid API here.</p></div>
+<div class="divider"></div>
+<h2>Selected piece</h2><p id="selectHint" class="muted">Click a piece on the canvas to adjust it.</p>
+<fieldset id="controls" disabled>
+<label for="size">Size <output id="sizeValue">24%</output></label><input id="size" type="range" min="10" max="50" value="24">
+<label for="rotation">Rotation <output id="rotationValue">0°</output></label><input id="rotation" type="range" min="-180" max="180" value="0">
+<label class="check"><input id="float" type="checkbox"> Let it float</label>
+<div class="actions"><button id="front">Bring forward</button><button id="remove" class="danger">Remove</button></div>
+</fieldset>
+<button id="undo" class="undo" hidden>↶ Undo remove</button>
+<p class="tiny keys">You can also use arrow keys to move a selected piece.</p>
+</aside>
+<section class="canvasArea" aria-label="Collage workspace">
+<div class="paperTop"><label for="title" class="sr-only">Collage title</label><input id="title" maxlength="80" placeholder="Give this feeling a name…"><span id="count">0 / 12 pieces</span></div>
+<div id="board" class="board" aria-label="Collage canvas"><div id="empty"><span class="emptyMark">＋</span><h2>What’s on your mind?</h2><p>Add a few images. Leave room between them.<br>There’s no right way to put a feeling together.</p></div></div>
+<div class="paperBottom"><span>Drag to arrange · click to adjust</span><span>IMPLICIT / EXPLICIT</span></div>
+</section>
+</div>
+<footer><span>Each piece stays editable. The whole is yours.</span><span>Saved only in this browser · export a JSON backup to keep a copy.</span></footer>
+</main>
+</body></html>

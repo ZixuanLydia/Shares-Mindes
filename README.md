@@ -6,6 +6,7 @@ Weekly projects and experiments for the Shares Mindes course.
 
 ## Projects
 
+- **Final Project — Secret Garden**: an immersive glass garden of shared thoughts, with hand-controlled blooming, semantic discovery, flower fusion and growth replay. [Project overview and local preview](secret-garden/README.md) · [Source code](secret-garden/) · [Screenshots and audit](secret-garden/outputs/Secret%20Garden%20V1%20Audit.md). Submitted as source code with local preview; not deployed as a live website yet.
 
 - **Week 3 — Small Pieces**: an interactive collage exploring parts and the whole. [Open website](https://zixuanlydia.github.io/Shares-Mindes/week-03/) · [Project notes](week-03/README.md) · [Source code](week-03/)
 - **Week 4 — Small Pieces in Time**: arrange scenes, change their order, play a story, save to Firebase and share a read-only snapshot. [Open website](https://zixuanlydia.github.io/Shares-Mindes/week-04/) · [Project notes](week-04/README.md) · [Source code](week-04/)

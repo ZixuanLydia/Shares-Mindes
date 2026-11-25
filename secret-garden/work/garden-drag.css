@@ -1,0 +1,9 @@
+    #garden .flower-target[data-can-move] { cursor: grab; touch-action: none; user-select: none; }
+    #garden[data-position-dragging], #garden .flower-target[data-moving] { cursor: grabbing; }
+    #garden .flower-target[data-moving]::before {
+      opacity: 1;
+      border-color: #ffe0cb80;
+      box-shadow: 0 0 32px #ffe1d22b;
+    }
+    #garden .flower-target[data-moving] .selection-tag { opacity: 1; transform: translateX(-50%); }
+    #garden .planted-target[data-growing] { cursor: ns-resize; }

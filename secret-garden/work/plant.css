@@ -1,0 +1,338 @@
+    .plant-entry {
+      margin-inline: auto 11px;
+      padding: 9px 15px;
+      min-height: 36px;
+      border: 1px solid #ffd8c8a6;
+      border-radius: 999px;
+      background: #ffd5c4;
+      color: #3e273b;
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: .015em;
+      white-space: nowrap;
+      transition: background .18s ease, box-shadow .18s ease;
+    }
+    .plant-entry:hover, .panel-action:not(:disabled):hover {
+      background: #ffe3d6;
+      box-shadow: 0 0 20px #ffd2ba30;
+    }
+    .plant-entry[aria-expanded="true"] {
+      background: #4f354be8;
+      color: #ffdfd0;
+    }
+    .masthead { z-index: 4; }
+    .garden-panel {
+      position: absolute;
+      z-index: 3;
+      top: max(103px, 15%);
+      right: 4.2%;
+      width: clamp(315px, 28vw, 370px);
+      max-height: calc(100% - max(128px, 19%));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 20px 22px 22px;
+      border: 1px solid #ffded05c;
+      border-radius: 20px;
+      background: linear-gradient(138deg, #382b40f5, #2b2035eb 67%, #342339f0);
+      backdrop-filter: blur(16px);
+      box-shadow: inset 0 1px #fff6f217, 0 16px 60px #160b1c74;
+    }
+    .panel-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 9px;
+    }
+    .panel-controls { display: flex; align-items: center; gap: 6px; }
+    .panel-title {
+      margin: 0;
+      color: var(--ink);
+      font: normal clamp(26px, 2.4vw, 32px)/1 Baskerville, Georgia, serif;
+      letter-spacing: -.025em;
+    }
+    .panel-title:focus, .step-title:focus { outline: none; }
+    .panel-close {
+      flex: 0 0 32px;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      padding: 0 0 2px;
+      border: 1px solid #ffe1d44d;
+      border-radius: 50%;
+      background: #ffe3ed06;
+      color: #ffddcf;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .panel-close:hover, .panel-back:hover { background: #ffe3ed19; }
+    .panel-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 28px;
+      margin: 0;
+      padding: 0 4px;
+      border: 0;
+      border-radius: 5px;
+      background: transparent;
+      color: #ecd3d9;
+      font-size: 11px;
+    }
+    .panel-back span { font: 18px/.8 Georgia, serif; }
+    .plant-step { margin-top: 14px; }
+    .thought-form { display: grid; gap: 9px; }
+    .panel-label {
+      display: block;
+      margin: 0;
+      color: #f6e3e4;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .thought-form textarea {
+      width: 100%;
+      min-height: 92px;
+      padding: 10px 12px;
+      resize: vertical;
+      border: 1px solid #ffe2d456;
+      border-radius: 10px;
+      background: #1e152984;
+      color: var(--ink);
+      font: 16px/1.43 "Helvetica Neue", Arial, sans-serif;
+    }
+    .thought-form textarea::placeholder { color: #d9c3d1; opacity: .8; }
+    .thought-form textarea:focus-visible {
+      outline: 2px solid #ffdac7;
+      outline-offset: 2px;
+    }
+    .step-title {
+      margin: 0 0 10px;
+      color: #ffe6d6;
+      font: normal 20px/1.12 Baskerville, Georgia, serif;
+    }
+    .panel-help {
+      margin: 0 0 16px;
+      color: #ead8e2;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+    .association-group { margin: 0 0 12px; }
+    .association-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 6px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .association-list li {
+      max-width: 100%;
+      padding: 4px 8px;
+      border: 1px solid #dcbdd73b;
+      border-radius: 999px;
+      background: #c6a4d61a;
+      color: #f0ddeb;
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }
+    .plant-fieldset {
+      min-inline-size: 0;
+      margin: 0 0 10px;
+      padding: 0;
+      border: 0;
+    }
+    .plant-fieldset legend { padding: 0; }
+    .plant-options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .plant-option { position: relative; min-width: 0; }
+    .plant-option input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: 0;
+      opacity: 0;
+    }
+    .choice-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      min-height: 33px;
+      padding: 5px 4px;
+      border: 1px solid #ffe0d34d;
+      border-radius: 8px;
+      background: #ffe7f008;
+      color: #f1dfe8;
+      font-size: 11px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .choice-label:hover { background: #ffe1dd18; }
+    .plant-option input:checked + .choice-label {
+      border-color: #f8c4ae;
+      background: #f5c3b52b;
+      color: #ffeadc;
+      box-shadow: inset 0 0 0 1px #ffc5ae4a;
+    }
+    .plant-option input:focus-visible + .choice-label {
+      outline: 2px solid #ffe0cc;
+      outline-offset: 2px;
+    }
+    .color-swatch {
+      flex: 0 0 10px;
+      height: 10px;
+      border: 1px solid #fff3f4a6;
+      border-radius: 50%;
+      box-shadow: inset 0 0 4px #fff8e680;
+    }
+    .peach-swatch { background: #f7ac97; }
+    .lilac-swatch { background: #c0a1e5; }
+    .blue-swatch { background: #a8d9f2; }
+    .grow-labels {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    #grow-progress {
+      color: #efcfc9;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    .grow-range { --progress: 0%; height: 32px; border-radius: 5px; }
+    .grow-range:focus-visible { outline-offset: 0; }
+    .panel-action {
+      display: block;
+      min-height: 38px;
+      margin: 13px 0 0 auto;
+      padding: 7px 17px;
+      border: 1px solid #ffd8c7;
+      border-radius: 999px;
+      background: #ffd5c4;
+      color: #3e273b;
+      font-size: 12px;
+      font-weight: 650;
+      transition: background .18s ease, box-shadow .18s ease;
+    }
+    .panel-action:disabled {
+      border-color: #eed4e034;
+      background: #f4c0cf20;
+      color: #e0c4d2;
+      cursor: default;
+    }
+    .thought-form .panel-action { margin-top: 3px; }
+    .plant-commit {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .plant-commit .panel-action { margin-top: 0; white-space: nowrap; }
+    .plant-stage-summary {
+      margin: 0;
+      color: #eed0ca;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    .flower-thought {
+      margin: 17px 0;
+      color: #ffe4d9;
+      font: normal 21px/1.32 Baskerville, Georgia, serif;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+    .detail-grow-hint { margin: 8px 0 0; }
+    .planted-target[aria-pressed="true"][data-can-grow],
+    .planted-target[data-growing] {
+      cursor: ns-resize;
+      touch-action: none;
+    }
+    .flower-fields {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: baseline;
+      gap: 8px 14px;
+      margin: 0;
+      padding-top: 12px;
+      border-top: 1px solid #ffe3df36;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .flower-fields dt { color: #e2c4cf; }
+    .flower-fields dd {
+      margin: 0;
+      color: #fff0ea;
+      overflow-wrap: anywhere;
+    }
+    .garden-status {
+      position: absolute;
+      z-index: 2;
+      bottom: max(28px, env(safe-area-inset-bottom));
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: min(370px, 86%);
+      margin: 0;
+      padding: 9px 14px;
+      border: 1px solid #ffdfd04d;
+      border-radius: 14px;
+      background: #392941f1;
+      color: #ffdfd0;
+      font-size: 12px;
+      line-height: 1.35;
+      text-align: center;
+      pointer-events: none;
+    }
+    .garden-status:empty { opacity: 0; }
+    .garden:has(#demo-controls:not([hidden])) .garden-status { bottom: 123px; }
+    .garden:has(#plant-panel:not([hidden])) .hint { display: none; }
+    @media (min-width: 761px) {
+      .flower-detail[data-side="left"] { left: 4.2%; right: auto; }
+      .garden:has(#flower-detail[data-side="left"]:not([hidden])) .intro { visibility: hidden; }
+    }
+    @media (max-width: 1020px) {
+      .garden:has(#plant-panel:not([hidden])) .intro { visibility: hidden; }
+    }
+    @media (max-width: 760px) {
+      .plant-entry {
+        min-height: 32px;
+        margin-right: 7px;
+        padding: 6px 10px;
+        font-size: 11px;
+      }
+      .garden-panel {
+        inset: auto 6% max(16px, env(safe-area-inset-bottom));
+        width: auto;
+        max-height: min(51svh, 51%);
+        padding: 15px 17px 17px;
+        border-radius: 17px;
+      }
+      .flower-detail {
+        inset: max(75px, 11%) 6% auto;
+        max-height: min(49svh, 49%);
+      }
+      .garden:has(#flower-detail:not([hidden])) .intro { visibility: hidden; }
+      .panel-title { font-size: 27px; }
+      .plant-step { margin-top: 11px; }
+      .panel-action { margin-top: 10px; }
+      .association-group { margin-bottom: 8px; }
+      .plant-fieldset { margin-bottom: 8px; }
+      .garden-status { bottom: max(20px, env(safe-area-inset-bottom)); }
+      .garden:has(#demo-controls:not([hidden])) .garden-status { bottom: 113px; }
+      .plant-commit .panel-action { margin-top: 0; }
+    }
+    @media (max-width: 435px) {
+      .masthead .identity { gap: 6px; }
+      .masthead .identity-school { display: none; }
+      .masthead .identity-name { white-space: nowrap; }
+      .masthead .camera { gap: 6px; padding-inline: 8px; }
+    }
+    @media (max-width: 355px) {
+      .masthead .camera-label { display: none; }
+    }

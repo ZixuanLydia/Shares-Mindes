@@ -1,0 +1,18 @@
+MediaPipe Vision Tasks and Hand Landmarker
+Copyright The MediaPipe Authors and Google LLC.
+
+MediaPipe Vision Tasks 0.10.22-rc.20250304 is distributed under the Apache
+License, Version 2.0. See LICENSE.txt in this directory.
+
+Sources:
+https://github.com/google-ai-edge/mediapipe
+https://www.npmjs.com/package/@mediapipe/tasks-vision/v/0.10.22-rc.20250304
+https://developers.google.com/edge/mediapipe/solutions/vision/hand_landmarker
+
+Google's Hand Landmarker float16 model bundle:
+https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/latest/hand_landmarker.task
+
+For local browser loading, vision.js wraps the upstream CommonJS SDK and Wasm
+loader in a factory that can run in a Worker, and omits the SDK source map link.
+The SDK and loader logic are unmodified. The Wasm binary and model bytes are
+unchanged after gzip decompression and base64 decoding.

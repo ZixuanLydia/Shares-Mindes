@@ -1,0 +1,198 @@
+    .history-entry {
+      min-height: 36px;
+      margin-inline-end: 11px;
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #35283b70;
+      color: #fff0eb;
+      font-size: 12px;
+      letter-spacing: .015em;
+      white-space: nowrap;
+      transition: background .18s ease, border-color .18s ease;
+    }
+    .history-entry:hover { background: #624b646e; }
+    .history-entry[aria-expanded="true"] {
+      border-color: #ffd5c4a6;
+      background: #4f354be8;
+      color: #ffdfd0;
+    }
+    .history-panel { display: flex; flex-direction: column; overflow: hidden; }
+    .history-views {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 3px;
+      margin: 16px 0 10px;
+      padding: 3px;
+      border: 1px solid #ffe1d434;
+      border-radius: 11px;
+      background: #1e15296b;
+    }
+    .history-views button {
+      min-height: 32px;
+      padding: 4px 6px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: transparent;
+      color: #e7d0da;
+      font-size: 12px;
+    }
+    .history-views button:hover { background: #ffe7f011; }
+    .history-views button[aria-selected="true"] {
+      border-color: #ffdbc64d;
+      background: #f5c3b529;
+      color: #ffe9de;
+    }
+    .history-count {
+      margin: 1px 0 8px;
+      color: #e2c4cf;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    .history-empty { margin: 10px 0 0; }
+    .history-list {
+      display: grid;
+      min-height: 0;
+      gap: 7px;
+      margin: 0 -3px;
+      padding: 3px 3px 5px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+    }
+    .history-list:empty { padding-block: 0; }
+    .history-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 3px 12px;
+      width: 100%;
+      min-height: 44px;
+      padding: 9px 11px;
+      border: 1px solid #ffe1d42c;
+      border-radius: 9px;
+      background: #ffe7f009;
+      color: #fff0e9;
+      text-align: start;
+    }
+    .history-row:hover {
+      border-color: #ffe1d45c;
+      background: #ffe7f016;
+    }
+    .history-row:focus-visible { outline-offset: -2px; }
+    .history-row::after {
+      content: "";
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      width: 6px;
+      height: 6px;
+      margin-inline-end: 2px;
+      border-top: 1px solid #ffdfcdbd;
+      border-right: 1px solid #ffdfcdbd;
+      transform: rotate(45deg);
+    }
+    .history-row-title {
+      grid-column: 1;
+      overflow: hidden;
+      color: #ffefe8;
+      font-size: 13px;
+      font-weight: 550;
+      line-height: 1.35;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .history-row-meta {
+      grid-column: 1;
+      color: #dec5d1;
+      font-size: 11px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+    .history-row-growth {
+      grid-column: 1;
+      color: #e8c1ad;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .history-group {
+      position: relative;
+      display: grid;
+      gap: 6px;
+      padding-inline-start: 14px;
+    }
+    .history-group + .history-group { margin-top: 8px; }
+    .history-group::before {
+      content: "";
+      position: absolute;
+      inset: 24px auto 12px 3px;
+      width: 1px;
+      background: #efc8c45c;
+    }
+    .history-date {
+      margin: 2px 0 2px -14px;
+      color: #ffdfcb;
+      font: normal 17px/1.15 Baskerville, Georgia, serif;
+    }
+    .history-group .history-row::before {
+      content: "";
+      position: absolute;
+      top: 17px;
+      left: -14px;
+      width: 7px;
+      height: 7px;
+      border: 1px solid #ffdfcd85;
+      border-radius: 50%;
+      background: #cda593;
+      box-shadow: 0 0 8px #ffcead3d;
+    }
+    .nickname-field {
+      display: grid;
+      gap: 6px;
+      margin: 2px 0;
+    }
+    .nickname-optional {
+      color: #e2c4cf;
+      font-size: 11px;
+      font-weight: normal;
+    }
+    .nickname-field input {
+      min-width: 0;
+      width: 100%;
+      min-height: 36px;
+      padding: 7px 11px;
+      border: 1px solid #ffe2d456;
+      border-radius: 9px;
+      background: #1e152984;
+      color: var(--ink);
+      font-size: 16px;
+    }
+    .nickname-field input::placeholder { color: #d9c3d1; opacity: .8; }
+    .nickname-field input:focus-visible { outline-offset: 2px; }
+    @media (max-width: 760px) {
+      .history-entry {
+        min-height: 32px;
+        margin-inline-end: 7px;
+        padding: 6px 9px;
+        font-size: 11px;
+      }
+      .history-panel {
+        inset: max(75px, 11%) 6% auto;
+        max-height: min(57svh, 57%);
+      }
+      .garden:has(#history-panel:not([hidden])) .intro { visibility: hidden; }
+    }
+    @media (max-width: 490px) {
+      .masthead { gap: 5px; }
+      .masthead .identity-school { display: none; }
+      .masthead .plant-entry, .masthead .history-entry {
+        margin-inline-end: 0;
+        padding-inline: 7px;
+        font-size: 10px;
+      }
+      .masthead .identity-name { font-size: 11px; }
+      .masthead .camera { padding-inline: 6px; }
+    }
+    @media (max-width: 399px) {
+      .masthead .identity .emblem { display: none; }
+    }

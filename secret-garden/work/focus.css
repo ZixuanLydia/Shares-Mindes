@@ -1,0 +1,382 @@
+    #garden > :is(.masthead, .intro, .garden-hint, .footer, .garden-panel, .garden-status) {
+      transition: opacity .28s ease, visibility 0s;
+    }
+    #garden:is([data-focus-phase="entering"], [data-focus-phase="focused"], [data-focus-phase="returning"])
+      > :is(.masthead, .intro, .garden-hint, .footer, .garden-panel, .garden-status) {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition-delay: 0s, .28s;
+    }
+    #garden:is([data-focus-phase="entering"], [data-focus-phase="focused"], [data-focus-phase="returning"])
+      :is(.flower-hit-layer, .flower-target, .grow-target) {
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .focus-view {
+      position: absolute;
+      z-index: 5;
+      inset: 0;
+      isolation: isolate;
+      pointer-events: none;
+    }
+    .focus-view::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 48%, #23192930 64%, #20152684 100%);
+      opacity: 0;
+      transition: opacity .48s ease;
+    }
+    .focus-view[data-ready]::before { opacity: 1; }
+    .focus-back, .focus-connections {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 8px 14px;
+      border: 1px solid #ffded359;
+      border-radius: 999px;
+      background: #3e2c465c;
+      color: #ffede3;
+      font-size: 12px;
+      letter-spacing: .02em;
+      transition: background .18s ease, border-color .18s ease;
+    }
+    .focus-back:hover, .focus-connections:hover {
+      border-color: #ffded399;
+      background: #65475886;
+    }
+    .focus-back {
+      position: absolute;
+      z-index: 3;
+      top: clamp(22px, 4.1%, 45px);
+      left: 4.2%;
+      gap: 8px;
+      pointer-events: auto;
+    }
+    .focus-back span { font-size: 17px; line-height: .9; }
+    .focus-reading {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      right: 6.8%;
+      width: min(37%, 510px);
+      max-height: min(calc(100% - 145px), 620px);
+      padding: 5px 8px 6px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(calc(-50% + 8px));
+      pointer-events: none;
+      transition: opacity .36s ease, transform .36s ease, visibility 0s .36s;
+    }
+    .focus-view[data-ready] .focus-reading {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(-50%);
+      pointer-events: auto;
+      transition-delay: 0s;
+    }
+    #garden[data-focus-phase="returning"] .focus-view::before { opacity: 0; }
+    #garden[data-focus-phase="returning"] .focus-reading {
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(calc(-50% + 8px));
+      pointer-events: none;
+      transition-delay: 0s, 0s, .28s;
+    }
+    .focus-thought {
+      margin: 0;
+      color: #fff1e6;
+      font: normal clamp(29px, 3.45vw, 49px)/1.13 Baskerville, Georgia, serif;
+      letter-spacing: -.035em;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+      text-shadow: 0 3px 28px #1d132899;
+    }
+    .focus-thought:focus { outline: none; }
+    .focus-meta {
+      margin: 15px 0 0;
+      color: #efd7db;
+      font-size: 12px;
+      line-height: 1.48;
+      overflow-wrap: anywhere;
+    }
+    .focus-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .focus-keywords li {
+      max-width: 100%;
+      padding: 4px 9px;
+      border: 1px solid #ffe5d43d;
+      border-radius: 999px;
+      background: #39274042;
+      color: #f2dbe3;
+      font-size: 11px;
+      line-height: 1.28;
+      overflow-wrap: anywhere;
+    }
+    .focus-keywords:empty, .focus-meta:empty, .focus-connection-status:empty { margin: 0; }
+    .focus-connections {
+      margin-top: 20px;
+      color: #ffe0ce;
+    }
+    .focus-connections:focus-visible { outline-offset: 2px; }
+    .focus-connection-status {
+      margin: 8px 0 0;
+      color: #efdae1;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    .focus-view[data-fused] :is(.focus-thought, .focus-meta, .focus-keywords, .focus-related, .focus-connection-status) {
+      display: none;
+    }
+    .focus-fusion-thought {
+      margin: 0;
+      color: #fff1e6;
+      font: normal clamp(25px, 2.85vw, 43px)/1.14 Baskerville, Georgia, serif;
+      letter-spacing: -.025em;
+      overflow-wrap: anywhere;
+      text-shadow: 0 3px 28px #1d132899;
+    }
+    .focus-fusion-sources {
+      display: grid;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .focus-fusion-source {
+      margin: 0;
+      padding-inline-start: 12px;
+      border-inline-start: 1px solid #ffc6ae63;
+    }
+    .focus-fusion-source:nth-child(2) { border-color: #dcc2f782; }
+    .focus-fusion-source blockquote {
+      margin: 0;
+      color: #ffefe9;
+      font-size: 14px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+    .focus-fusion-source figcaption {
+      margin-top: 4px;
+      color: #e5cdd9;
+      font-size: 11px;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+    .focus-fusion-cue {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0 7px;
+      margin: 13px 0 0;
+      color: #e5cdd9;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    .focus-fusion-cue button {
+      border: 0;
+      padding: 4px 0;
+      background: none;
+      color: #ffe4cf;
+      font: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .focus-fusion-cue button:focus-visible { outline-offset: 2px; }
+    .focus-fusion-announcement {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .focus-connections[aria-expanded="true"] { border-color: #ffded399; }
+    .focus-related {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid #ffded344;
+    }
+    .focus-related-heading {
+      margin: 0;
+      color: #ffe8d9;
+      font: normal 23px/1.18 Baskerville, Georgia, serif;
+    }
+    .focus-related-heading:focus { outline: none; }
+    .focus-drag-hint {
+      margin: 4px 0 8px;
+      color: #e8cfd6;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    .focus-shared-terms { margin-top: 9px; }
+    .focus-shared-terms:has(.focus-related-words:empty) { display: none; }
+    .focus-shared-terms h4 {
+      margin: 0 0 5px;
+      color: #edcedc;
+      font-size: 11px;
+      font-weight: 550;
+    }
+    .focus-related-words {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .focus-related-words li {
+      max-width: 100%;
+      padding: 3px 8px;
+      border: 1px solid #e7c6ed55;
+      border-radius: 999px;
+      background: #8767963e;
+      color: #f6e1fa;
+      font-size: 11px;
+      line-height: 1.3;
+      overflow-wrap: anywhere;
+    }
+    .focus-related-list {
+      display: grid;
+      gap: 2px;
+      margin: 6px 0 0;
+    }
+    .focus-related-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 2px 11px;
+      width: 100%;
+      min-height: 42px;
+      padding: 6px 8px 7px;
+      border: 0;
+      border-bottom: 1px solid #ffded32a;
+      border-radius: 5px;
+      background: transparent;
+      text-align: start;
+    }
+    .focus-related-row:hover { background: #ffded313; }
+    .focus-related-row:focus-visible { outline-offset: -2px; }
+    .focus-related-row::after {
+      content: "";
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      width: 6px;
+      height: 6px;
+      margin-right: 2px;
+      border-top: 1px solid #ffdfcdbd;
+      border-right: 1px solid #ffdfcdbd;
+      transform: rotate(45deg);
+    }
+    .focus-related-title {
+      display: -webkit-box;
+      grid-column: 1;
+      overflow: hidden;
+      color: #fff0e9;
+      font-size: 13px;
+      font-weight: 550;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+    .focus-related-meta {
+      grid-column: 1;
+      color: #e6c9d6;
+      font-size: 11px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+    .focus-connection-targets {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      pointer-events: none;
+    }
+    .connection-flower {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      pointer-events: auto;
+      cursor: grab;
+      touch-action: none;
+    }
+    .connection-flower[data-dragging] { cursor: grabbing; }
+    .connection-flower::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border: 1px solid #ffe6d465;
+      border-radius: inherit;
+      opacity: 0;
+      box-shadow: 0 0 23px #ffd8c93d;
+      pointer-events: none;
+      transition: opacity .24s ease;
+    }
+    .connection-flower:is(:hover, :focus-visible, [data-dragging])::before { opacity: 1; }
+    .connection-flower[data-fusing]::before { opacity: 0; }
+    .connection-flower:focus-visible { outline: 1px solid #ffe0ce; outline-offset: 2px; }
+    .focus-view:not([data-ready]) .connection-flower,
+    #garden[data-focus-phase="returning"] .connection-flower {
+      visibility: hidden;
+      pointer-events: none;
+    }
+    @media (max-width: 760px) {
+      .focus-view::before {
+        background: linear-gradient(0deg, #201526d6 0%, #22152a9c 24%, #23192924 48%, transparent 63%);
+      }
+      .focus-back {
+        top: max(16px, env(safe-area-inset-top));
+        left: 6%;
+      }
+      .focus-reading {
+        inset: auto 6% max(22px, env(safe-area-inset-bottom));
+        width: auto;
+        max-height: 44%;
+        transform: translateY(8px);
+      }
+      .focus-view[data-ready] .focus-reading { transform: none; }
+      #garden[data-focus-phase="returning"] .focus-reading { transform: translateY(8px); }
+      .focus-thought { font-size: clamp(26px, 6vw, 38px); }
+      .focus-meta { margin-top: 10px; }
+      .focus-keywords { margin-top: 9px; }
+      .focus-connections { margin-top: 14px; }
+      .focus-fusion-thought { font-size: clamp(22px, 5.6vw, 30px); }
+      .focus-fusion-sources { gap: 8px; margin-top: 11px; }
+      .focus-fusion-source blockquote { font-size: 13px; }
+      .focus-fusion-cue { margin-top: 8px; }
+    }
+    .focus-shade {
+      position: absolute;
+      z-index: -5;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 37% 46%, #23172830, #211424a6 70%, #1c1222c0);
+    }
+    @media (max-width: 760px) {
+      .focus-shade { background: radial-gradient(ellipse at 50% 35%, #23172832, #211424a6 74%, #1c1222bb); }
+    }
+    .focus-view[data-switching][data-ready] .focus-reading {
+      opacity: .30;
+      transition-duration: .24s;
+    }
+    .focus-connections:disabled { opacity: .54; cursor: default; }
+    .focus-connections[aria-busy="true"] { opacity: .85; cursor: progress; }
+    .focus-connection-status[data-searching] { color: #ffe0ce; }

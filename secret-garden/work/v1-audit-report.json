@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-24",
+  "scope": "Existing desktop Secret Garden V1; local static and local shared; no deployment",
+  "outcome": "Core local classroom demonstration passed; no P0 product-code defect found",
+  "source_changes": ["README.md", "outputs/使用与九周扩展.md", "outputs/Secret Garden V1 Audit.md", "work/package-v1.py"],
+  "rendering_source_changed": false,
+  "user_data_modified_or_cleared": false,
+  "manual_flows": [
+    "Local welcome and empty thought validation",
+    "Nickname, Flared/Lilac preview, Grow 60%, plant, refresh and restore",
+    "Local My Flowers, Timeline, exact thought/author/properties, growth replay seek and return",
+    "Demo focus, Play/Pause, stages and reset settles at 0%",
+    "Native Grow mouse drag 0% to 56%, close draft without creating extra flower",
+    "Two independent browser identities each plant and see shared flowers without refresh",
+    "A My Flowers count 1, B count 2, Timeline count 3; both refresh recover",
+    "Actual local multilingual embedding matches family dinner across languages and excludes train ticket",
+    "Find Connections gather, native drag fusion, release stays joined, blank separates",
+    "Related flower click switches focus, Hide Connections and Back restore garden",
+    "Native own-flower move saves and refresh restores; no accidental focus",
+    "Unselected hover glow reaches 0.66; Parallax switch changes state",
+    "Existing own bud grows to 10% via detail keyboard and saves shared",
+    "Chrome one-time camera permission, actual 320x240 video readyState 4, real model ready",
+    "Camera Pause/Resume/Close and mouse fallback; no video or camera screenshots saved",
+    "Final browser logs show no blocking script errors or warnings"
+  ],
+  "node_suites": [
+    "work/intro-qa.cjs", "work/garden-history-qa.cjs", "work/shared-data-qa.cjs",
+    "work/shared-ui-qa.cjs", "work/shared-scene-qa.cjs", "work/position-data-qa.cjs",
+    "work/garden-drag-qa.cjs", "work/garden-position-scene-qa.cjs", "work/body-hand-qa.cjs",
+    "work/body-continuity-qa.cjs", "work/semantic-connections-qa.cjs",
+    "work/semantic-motion-qa.cjs", "work/semantic-focus-qa.cjs", "work/connection-fusion-qa.cjs"
+  ],
+  "node_suites_passed": 14,
+  "backend_tests_passed": 8,
+  "additional_numerical_checks": {
+    "renderer_pose_cases": 167,
+    "finite_operations": 1772810,
+    "connection_geometry_cases": 2700,
+    "body_chain": "Synthetic 12Hz detector/60Hz draw produced sway, pollen, echo; not live-hand evidence"
+  },
+  "real": ["MediaPipe", "MiniLM embeddings", "SQLite sharing", "localStorage", "procedural 3D petals"],
+  "rule_based": ["Preset associations", "fusion sentence composition"],
+  "not_implemented": ["Generative AI suggestions", "UMAP", "Firebase", "public hosting", "cross-device account recovery"],
+  "verification_limits": [
+    "No live human palm/fist sequence or real-hand feel assessment this round",
+    "No large flower-count FPS stress test",
+    "Two independent browsers on one computer; no second physical Wi-Fi device",
+    "Static HTTP UI tested; direct file persistence covered by data code/tests",
+    "Course writings, Github/Dashboard and NotebookLM submissions not inspected"
+  ],
+  "qa_ports": [8852, 8853],
+  "production_port": 8851,
+  "qa_database": "/private/tmp/secret-garden-v1-audit-20261124.sqlite3",
+  "proof": [
+    "outputs/Secret Garden V1 garden.jpg", "outputs/Secret Garden V1 focus.jpg",
+    "outputs/Secret Garden V1 connections.jpg", "outputs/Secret Garden V1 fusion.jpg",
+    "outputs/Secret Garden V1 timeline.jpg"
+  ]
+}

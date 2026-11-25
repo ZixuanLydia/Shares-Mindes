@@ -1,0 +1,20 @@
+      <section class="replay-dock" id="replay-dock" aria-label="Recorded flower growth" hidden>
+        <div class="replay-heading">
+          <h3>Growth replay</h3>
+          <span class="replay-records" id="replay-records"></span>
+          <output class="replay-percent" id="replay-percent" aria-hidden="true">0%</output>
+        </div>
+        <div class="replay-controls" id="replay-controls">
+          <button class="round-button replay-play" id="replay-play" type="button" aria-label="Play growth replay" title="Play growth replay">
+            <span class="replay-play-icon" aria-hidden="true"></span>
+          </button>
+          <input class="range replay-range" id="replay-range" type="range" min="0" max="1000" step="1" value="0" aria-label="Growth replay position" aria-describedby="replay-event">
+          <button class="round-button replay-restart" id="replay-restart" type="button" aria-label="Restart growth replay" title="Restart growth replay">
+            <span aria-hidden="true">↺</span>
+          </button>
+        </div>
+        <p class="replay-event" id="replay-event">
+          <span id="replay-source"></span><time id="replay-time"></time>
+        </p>
+        <p class="replay-note" id="replay-note" hidden></p>
+      </section>

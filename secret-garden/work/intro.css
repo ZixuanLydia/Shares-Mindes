@@ -1,0 +1,48 @@
+    /* The name welcomes a visit; the persistent garden remains open to input. */
+    #garden > .intro {
+      opacity: 0;
+      transform: translateY(calc(-50% + 8px));
+      transition: opacity .6s ease, transform .9s cubic-bezier(.2, .65, .3, 1);
+      pointer-events: none;
+    }
+    #garden[data-intro-phase="visible"] > .intro {
+      opacity: 1;
+      transform: translateY(-50%);
+    }
+    #garden[data-intro-phase="leaving"] > .intro {
+      opacity: 0;
+      transform: translateY(calc(-50% - 6px));
+      transition-duration: 1s;
+    }
+    #garden[data-intro-skipped] > .intro { transition-duration: .18s; }
+    #garden[data-intro-phase="finished"] > .intro {
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      transform: none;
+      transition: none;
+    }
+    #garden > .garden-hint {
+      position: absolute;
+      z-index: 2;
+      left: 4.2%;
+      bottom: max(28px, env(safe-area-inset-bottom));
+      max-width: 280px;
+      margin: 0;
+      color: #e4d0d3d9;
+      font: 400 12px/1.6 var(--font-ui);
+      letter-spacing: .01em;
+      text-shadow: 0 2px 16px #1b1026;
+      pointer-events: none;
+      transition: opacity .6s ease;
+    }
+    #garden:is([data-intro-phase="waiting"], [data-intro-phase="visible"], [data-intro-phase="leaving"]) > .garden-hint { opacity: 0; }
+    #garden:has(#demo-controls:not([hidden])) > .garden-hint { bottom: 128px; }
+    #garden:has(:is(#flower-detail, #history-panel):not([hidden])) > .garden-hint { opacity: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      #garden > :is(.intro, .garden-hint) { transition: none; }
+    }

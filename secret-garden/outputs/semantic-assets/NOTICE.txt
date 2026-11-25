@@ -1,0 +1,15 @@
+Secret Garden local semantic matching
+
+Runtime: Hugging Face Transformers.js 3.8.1 (Apache-2.0), from official npm package @huggingface/transformers.
+https://github.com/huggingface/transformers.js/tree/3.8.1
+
+Inference backend: ONNX Runtime Web 1.22.0-dev.20250409-89f8206ba4 (MIT). WASM binary included in the official Transformers.js release.
+https://github.com/microsoft/onnxruntime
+
+Model: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 (Apache-2.0), quantized ONNX conversion from Xenova/paraphrase-multilingual-MiniLM-L12-v2, pinned revision 2c4055b.
+https://huggingface.co/Xenova/paraphrase-multilingual-MiniLM-L12-v2/tree/2c4055b
+https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+
+Packaging: runtime module export converted to a named Worker factory and import.meta.url replaced by the Worker URL to support offline file:// classic-script assets. Model and WASM files are gzip/base64 encoded, with original byte hashes in manifest.json. No learned model weights were modified.
+
+User thoughts are processed locally in a Worker. Remote model loading and online caches are disabled. Meaning vectors are cached in this browser using IndexedDB when available.

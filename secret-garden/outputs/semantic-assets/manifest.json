@@ -1,0 +1,81 @@
+{
+  "model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+  "revision": "2c4055b",
+  "runtime": "@huggingface/transformers@3.8.1",
+  "dimensions": 384,
+  "resources": [
+    {
+      "name": "wasm",
+      "bytes": 21596019,
+      "sha256": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39",
+      "parts": [
+        "resource-00-00.js",
+        "resource-00-01.js"
+      ]
+    },
+    {
+      "name": "config.json",
+      "bytes": 673,
+      "sha256": "05b570bff786faa5c4604152aa16f19f77ed6dfc31e47dd0f3dd987078693ac7",
+      "parts": [
+        "resource-01-00.js"
+      ]
+    },
+    {
+      "name": "tokenizer_config.json",
+      "bytes": 496,
+      "sha256": "3f5961b9ac86288cccdb97f32fb848d6187c78e1603958c53f3ea1f296b7d8a2",
+      "parts": [
+        "resource-02-00.js"
+      ]
+    },
+    {
+      "name": "special_tokens_map.json",
+      "bytes": 280,
+      "sha256": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f",
+      "parts": [
+        "resource-03-00.js"
+      ]
+    },
+    {
+      "name": "tokenizer.json",
+      "bytes": 17082913,
+      "sha256": "b60b6b43406a48bf3638526314f3d232d97058bc93472ff2de930d43686fa441",
+      "parts": [
+        "resource-04-00.js",
+        "resource-04-01.js"
+      ]
+    },
+    {
+      "name": "onnx/model_quantized.onnx",
+      "bytes": 118308126,
+      "sha256": "66fc00f5f29afcaff34092e1bdd20008ca3918265a82fb9695a551e510cc4ebc",
+      "parts": [
+        "resource-05-00.js",
+        "resource-05-01.js",
+        "resource-05-02.js",
+        "resource-05-03.js",
+        "resource-05-04.js",
+        "resource-05-05.js",
+        "resource-05-06.js",
+        "resource-05-07.js",
+        "resource-05-08.js",
+        "resource-05-09.js",
+        "resource-05-10.js",
+        "resource-05-11.js",
+        "resource-05-12.js",
+        "resource-05-13.js",
+        "resource-05-14.js",
+        "resource-05-15.js",
+        "resource-05-16.js",
+        "resource-05-17.js",
+        "resource-05-18.js",
+        "resource-05-19.js",
+        "resource-05-20.js",
+        "resource-05-21.js",
+        "resource-05-22.js",
+        "resource-05-23.js"
+      ]
+    }
+  ]
+}

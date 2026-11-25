@@ -1,0 +1,41 @@
+    <section class="focus-view" id="focus-view" aria-label="Focused flower" hidden>
+      <button class="focus-back" id="focus-back" type="button">
+        <span aria-hidden="true">←</span> Back to Garden
+      </button>
+      <div class="focus-reading">
+        <h2 class="focus-thought" id="focus-thought" tabindex="-1"></h2>
+        <p class="focus-meta" id="focus-meta"></p>
+        <ul class="focus-keywords" id="focus-keywords" aria-label="Associated keywords"></ul>
+        <section class="focus-fusion" id="focus-fusion" aria-labelledby="focus-fusion-thought" hidden>
+          <h2 class="focus-fusion-thought" id="focus-fusion-thought"></h2>
+          <div class="focus-fusion-sources">
+            <figure class="focus-fusion-source">
+              <blockquote id="focus-fusion-first"></blockquote>
+              <figcaption id="focus-fusion-first-meta"></figcaption>
+            </figure>
+            <figure class="focus-fusion-source">
+              <blockquote id="focus-fusion-second"></blockquote>
+              <figcaption id="focus-fusion-second-meta"></figcaption>
+            </figure>
+          </div>
+          <p class="focus-fusion-cue">
+            <button id="focus-fusion-split" type="button">Separate flowers</button>
+            <span>or tap an open area of the garden</span>
+          </p>
+        </section>
+        <p class="focus-fusion-announcement" id="focus-fusion-announcement" role="status" aria-atomic="true"></p>
+        <button class="focus-connections" id="focus-connections" type="button" aria-controls="focus-related focus-fusion" aria-expanded="false">Find Connections</button>
+        <p class="focus-connection-status" id="focus-connection-status" role="status" aria-atomic="true"></p>
+        <section class="focus-related" id="focus-related" aria-labelledby="focus-related-title" hidden>
+          <h3 class="focus-related-heading" id="focus-related-title" tabindex="-1">Related flowers</h3>
+          <p class="focus-drag-hint" id="focus-drag-hint">Drag a small flower until it touches the large one.</p>
+          <div class="focus-shared-terms">
+            <h4 id="focus-shared-title">Shared keywords</h4>
+            <ul class="focus-related-words" id="focus-related-words" aria-labelledby="focus-shared-title"></ul>
+          </div>
+          <div class="focus-related-list" id="focus-related-list"></div>
+        </section>
+      </div>
+      <div class="focus-connection-targets" id="focus-connection-targets"></div>
+__REPLAY_MARKUP__
+    </section>

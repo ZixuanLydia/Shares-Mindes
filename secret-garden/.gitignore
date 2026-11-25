@@ -1,0 +1,13 @@
+.DS_Store
+.env
+.env.*
+__pycache__/
+*.py[cod]
+server/data/
+*.sqlite3*
+*.zip
+node_modules/
+work/semantic-vendor/
+work/body-vendor/
+work/swift-cache/
+*.y4m

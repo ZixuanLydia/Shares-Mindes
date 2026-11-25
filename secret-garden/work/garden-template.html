@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#251c2b">
+  <title>Secret Garden · Shared Minds</title>
+  <style>
+__TYPE_FONTS__
+    :root {
+      color-scheme: dark;
+      --ink: #fff3e9;
+      --muted: #e4d0d3;
+      --peach: #ffc8af;
+      --line: rgba(255, 228, 221, .24);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #241b2b;
+      color: var(--ink);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; }
+    button, input { font: inherit; }
+    button { color: inherit; cursor: pointer; }
+    button:focus-visible, input:focus-visible {
+      outline: 2px solid #ffe2cd;
+      outline-offset: 5px;
+    }
+    [hidden] { display: none !important; }
+    .garden {
+      position: relative;
+      isolation: isolate;
+      min-height: 620px;
+      height: 100svh;
+      overflow: hidden;
+      overflow: clip;
+      background: #463449;
+      --scene: url("data:image/jpeg;base64,__GARDEN_JPEG__");
+    }
+    .landscape, .foreground, .vignette, .scene {
+      pointer-events: none;
+      position: absolute;
+    }
+    .landscape, .foreground {
+      inset: -22px;
+      background: var(--scene) center 57% / cover no-repeat;
+      will-change: transform;
+    }
+    .landscape { z-index: -5; }
+    .scene { z-index: -4; inset: 0; width: 100%; height: 100%; }
+    .foreground {
+      z-index: -3;
+      mask-image: linear-gradient(to top, #000 0%, #000d 9%, #0005 17%, transparent 26%);
+      filter: blur(2px);
+    }
+    .vignette {
+      z-index: -2;
+      inset: 0;
+      background:
+        linear-gradient(90deg, #211626b0, #261b2b5c 30%, transparent 57%),
+        linear-gradient(0deg, #190f21d9, #21142613 33%, transparent 76%, #22182b6b 100%);
+    }
+    .masthead {
+      position: absolute;
+      top: 0;
+      left: 4.2%;
+      right: 4.2%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 83px;
+      border-bottom: 1px solid var(--line);
+    }
+    .identity, .camera, .dock-controls, .dock-heading {
+      display: flex;
+      align-items: center;
+    }
+    .identity { gap: 13px; }
+    .identity-name { font-size: 14px; font-weight: 550; letter-spacing: .03em; }
+    .identity-school {
+      font-size: 10px;
+      letter-spacing: .14em;
+      color: var(--muted);
+      padding-left: 13px;
+      border-left: 1px solid var(--line);
+    }
+    .emblem {
+      display: grid;
+      place-items: center;
+      position: relative;
+      width: 27px;
+      height: 27px;
+      border: 1px solid #ffe0d591;
+      border-radius: 50%;
+      color: #ffe2d2;
+      font-size: 17px;
+      line-height: 1;
+    }
+    .camera {
+      gap: 10px;
+      padding: 8px 10px 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: #35283b70;
+      color: #fff0eb;
+      font-size: 11px;
+      letter-spacing: .05em;
+    }
+    .camera:hover { background: #624b646e; }
+    .switch {
+      width: 23px;
+      height: 13px;
+      border: 1px solid #f4d8ce80;
+      border-radius: 10px;
+      position: relative;
+    }
+    .switch::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #dbc5cb;
+      transition: transform .24s, background .24s;
+    }
+    .camera[aria-pressed="true"] .switch::after {
+      background: var(--peach);
+      transform: translateX(10px);
+      box-shadow: 0 0 8px #ffcfbc77;
+    }
+    .intro {
+      position: absolute;
+      left: 7%;
+      top: 43%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .intro h1 {
+      margin: 0;
+      font-family: Baskerville, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(84px, 9.6vw, 155px);
+      letter-spacing: -.065em;
+      line-height: .78;
+      text-shadow: 0 4px 36px #2b182a4d;
+    }
+    .intro h1 em {
+      display: block;
+      font-weight: inherit;
+      letter-spacing: -.067em;
+      color: #ffd0bd;
+      padding-left: .04em;
+      padding-right: .16em;
+    }
+    .tagline {
+      margin: 33px 0 0 6px;
+      font-family: Baskerville, Georgia, serif;
+      font-size: clamp(18px, 1.65vw, 24px);
+      color: #f6e0df;
+      letter-spacing: .015em;
+    }
+    .hint {
+      margin: 16px 0 0 7px;
+      font-size: 11px;
+      letter-spacing: .055em;
+      color: var(--muted);
+    }
+    .footer {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      left: 4.2%;
+      right: 4.2%;
+      bottom: max(28px, env(safe-area-inset-bottom));
+      pointer-events: none;
+    }
+    .dock {
+      width: min(100%, 468px);
+      padding: 15px 19px 11px;
+      border: 1px solid #ffe0d750;
+      border-radius: 18px;
+      background: linear-gradient(120deg, #342637ec, #35273ded);
+      backdrop-filter: blur(15px);
+      box-shadow: inset 0 1px 0 #fff6f217, 0 14px 55px #130a1666;
+      pointer-events: auto;
+    }
+    .dock-heading {
+      justify-content: space-between;
+      padding-left: 2px;
+    }
+    .dock-heading label {
+      font-size: 10px;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .progress-value {
+      font-variant-numeric: tabular-nums;
+      color: #efd0ca;
+      font-size: 11px;
+      letter-spacing: .04em;
+    }
+    .dock-controls { gap: 13px; margin-top: 6px; }
+    .round-button {
+      flex: 0 0 36px;
+      align-self: flex-start;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid #ffe1d43b;
+      background: transparent;
+    }
+    .play {
+      background: #ffd4be;
+      border-color: #ffd4be;
+      color: #45283b;
+    }
+    .play:hover { background: #ffe3d1; }
+    .reset:hover { background: #ffe2dd20; }
+    .play-icon {
+      width: 0;
+      height: 0;
+      margin-left: 2px;
+      border: 5px solid transparent;
+      border-right: 0;
+      border-left: 8px solid currentColor;
+    }
+    .play[data-playing="true"] .play-icon {
+      margin: 0;
+      width: 8px;
+      height: 10px;
+      border: 0;
+      border-inline: 2px solid currentColor;
+    }
+    .reset-icon { font: 20px/1 Georgia, serif; }
+    .timeline { flex: 1; min-width: 0; }
+    .range {
+      display: block;
+      appearance: none;
+      width: 100%;
+      height: 25px;
+      margin: 0;
+      background: transparent;
+      cursor: pointer;
+      --progress: 50%;
+    }
+    .range::-webkit-slider-runnable-track {
+      height: 2px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #ffd0b8 var(--progress), #f9e0de3b var(--progress));
+    }
+    .range::-moz-range-track {
+      height: 2px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #ffd0b8 var(--progress), #f9e0de3b var(--progress));
+    }
+    .range::-webkit-slider-thumb {
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      margin-top: -5px;
+      background: #ffe2ce;
+      border: 1px solid #fff1e1;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #ffc0aa70;
+    }
+    .range::-moz-range-thumb {
+      width: 11px;
+      height: 11px;
+      background: #ffe2ce;
+      border: 1px solid #fff1e1;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #ffc0aa70;
+    }
+    .stages {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      margin-top: -2px;
+    }
+    .stage {
+      justify-self: center;
+      padding: 5px 2px 6px;
+      border: none;
+      border-radius: 4px;
+      background: transparent;
+      color: #e6cfd4;
+      font-size: 10px;
+      letter-spacing: .055em;
+      white-space: nowrap;
+    }
+    .stage:first-child { justify-self: start; }
+    .stage:last-child { justify-self: end; }
+    .stage:hover, .stage[aria-pressed="true"] { color: #ffd0b9; }
+    .stage[aria-pressed="true"] { font-weight: 700; }
+    .flower-target {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 48%;
+      background: transparent;
+    }
+    .flower-target[data-ready] { opacity: 1; }
+    .flower-target::before {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      inset: -5px -8px;
+      border: 1px solid #ffe6d440;
+      border-radius: 50%;
+      box-shadow: 0 0 30px #ffe1d219;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .flower-target:hover::before { opacity: .66; }
+    .flower-target[aria-pressed="true"]::before { opacity: 1; }
+    .selection-tag {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-4px);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      width: max-content;
+      padding: 6px 10px;
+      border: 1px solid #ffe2d459;
+      border-radius: 16px;
+      background: #342438d9;
+      font-size: 10px;
+      letter-spacing: .065em;
+      color: #ffe1ce;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s, transform .3s;
+    }
+    .selection-tag::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ffd6bd;
+      box-shadow: 0 0 10px #ffbeaa;
+    }
+    #flower-target:hover .selection-tag,
+    #flower-target:focus-visible .selection-tag,
+    .flower-target[aria-pressed="true"] .selection-tag {
+      transform: translateX(-50%);
+      opacity: 1;
+    }
+    @media (max-width: 760px) {
+      .garden { min-height: 620px; }
+      .masthead { min-height: 63px; left: 6%; right: 6%; }
+      .identity { gap: 8px; }
+      .identity-name { font-size: 12px; }
+      .identity-school { padding-left: 9px; font-size: 9px; }
+      .emblem { width: 23px; height: 23px; font-size: 14px; }
+      .intro { left: 7%; top: clamp(89px, 13%, 132px); transform: none; }
+      .intro h1 { font-size: clamp(59px, 12vw, 90px); }
+      .intro h1 em { display: inline; margin-left: .025em; }
+      .tagline { margin: 16px 0 0 3px; }
+      .hint { margin: 9px 0 0 3px; font-size: 10px; }
+      .landscape, .foreground { background-position: 58% center; }
+      .vignette { background: linear-gradient(0deg, #1c1124ed, transparent 33%, transparent 55%, #211727a6 100%); }
+      .footer { left: 6%; right: 6%; bottom: max(20px, env(safe-area-inset-bottom)); }
+      .dock { padding-inline: 15px; }
+    }
+    @media (max-width: 390px) {
+      .intro h1 { font-size: clamp(51px, 14vw, 59px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0s !important; }
+    }
+    .flower-hit-layer { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+    .flower-target { pointer-events: auto; }
+    #planted-targets { display: contents; }
+    .footer { z-index: 2; }
+    .grow-target {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      cursor: ns-resize;
+      border-radius: 48%;
+      touch-action: none;
+    }
+    .grow-target[data-dragging], .grow-target:hover {
+      box-shadow: 0 0 0 1px #ffe6d440, 0 0 24px #ffe1d215;
+    }
+__PLANT_CSS__
+__HISTORY_CSS__
+__FOCUS_CSS__
+__REPLAY_CSS__
+__BODY_CSS__
+__TYPOGRAPHY_CSS__
+__SHARED_CSS__
+__POSITION_DRAG_CSS__
+__INTRO_CSS__
+  </style>
+</head>
+<body>
+  <main class="garden" id="garden" aria-labelledby="title">
+    <div class="landscape" id="landscape" aria-hidden="true"></div>
+    <div class="focus-shade" id="focus-shade" aria-hidden="true"></div>
+    <canvas class="scene" id="scene" aria-hidden="true"></canvas>
+    <div class="foreground" id="foreground" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="masthead">
+      <span class="shared-state" id="shared-state" role="status" aria-live="polite" hidden></span>
+__PLANT_ENTRY__
+__HISTORY_ENTRY__
+__BODY_ENTRY__
+      <button type="button" class="camera" id="camera" aria-label="Parallax" aria-pressed="true" title="Move your mouse to look around">
+        <span class="camera-label">Parallax</span> <span class="switch" aria-hidden="true"></span>
+      </button>
+    </header>
+
+    <div class="intro">
+      <h1 id="title">Secret <em>Garden</em></h1>
+      <p class="tagline">A garden of shared thoughts.</p>
+    </div>
+    <p class="hint garden-hint" id="scene-hint">Drag to move · Click a flower to look closer.</p>
+
+    <div class="flower-hit-layer">
+      <button type="button" class="flower-target" id="flower-target" aria-label="Demo flower" aria-pressed="false" aria-controls="focus-view demo-controls" aria-describedby="scene-hint" hidden>
+        <span class="selection-tag" aria-hidden="true">Demo flower</span>
+      </button>
+      <div id="planted-targets"></div>
+    </div>
+    <div class="grow-target" id="grow-target" aria-hidden="true" hidden></div>
+
+    <footer class="footer" id="demo-controls" hidden>
+      <section class="dock" aria-label="Demo flower controls">
+        <div class="dock-heading">
+          <label for="bloom">Demo flower bloom</label>
+          <output class="progress-value" id="progress" for="bloom" aria-hidden="true">50%</output>
+        </div>
+        <div class="dock-controls">
+          <button type="button" class="round-button play" id="play" aria-label="Play demo bloom" title="Play demo bloom">
+            <span class="play-icon" aria-hidden="true"></span>
+          </button>
+          <div class="timeline">
+            <input class="range" id="bloom" type="range" min="0" max="100" step="1" value="50" aria-valuetext="50%, half-open">
+            <div class="stages" role="group" aria-label="Bloom stages">
+              <button class="stage" type="button" data-bloom="0" aria-pressed="false">Bud</button>
+              <button class="stage" type="button" data-bloom="0.5" aria-pressed="true">Half-open</button>
+              <button class="stage" type="button" data-bloom="1" aria-pressed="false">Bloom</button>
+            </div>
+          </div>
+          <button type="button" class="round-button reset" id="reset" aria-label="Reset to bud" title="Reset to bud">
+            <span class="reset-icon" aria-hidden="true">↺</span>
+          </button>
+        </div>
+      </section>
+    </footer>
+__PLANT_MARKUP__
+__HISTORY_MARKUP__
+__FOCUS_MARKUP__
+__BODY_MARKUP__
+  </main>
+  <script>
+__FLOWER_RENDERER__
+  </script>
+  <script>
+__SHARED_APP__
+  </script>
+  <script>
+__GARDEN_DATA__
+  </script>
+  <script>
+__PLANT_APP__
+  </script>
+  <script>
+__HISTORY_APP__
+  </script>
+  <script>
+__SEMANTIC_WORKER__
+  </script>
+  <script>
+__SEMANTIC_ENGINE__
+  </script>
+  <script>
+__CONNECTIONS_DATA__
+  </script>
+  <script>
+__CONNECTIONS_MOTION__
+  </script>
+  <script>
+__CONNECTIONS_DRAG__
+  </script>
+  <script>
+__REPLAY_APP__
+  </script>
+  <script>
+__FOCUS_APP__
+  </script>
+  <script>
+__BODY_DETECTOR__
+  </script>
+  <script>
+__BODY_HAND__
+  </script>
+  <script>
+__BODY_CAMERA__
+  </script>
+  <script>
+__BODY_MOTION__
+  </script>
+  <script>
+__POSITION_DRAG_APP__
+  </script>
+  <script>
+__INTRO_APP__
+  </script>
+  <script>
+__GARDEN_APP__
+  </script>
+</body>
+</html>

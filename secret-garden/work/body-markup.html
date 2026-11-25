@@ -1,0 +1,16 @@
+    <section class="garden-panel body-panel" id="body-panel" aria-labelledby="body-title" data-state="idle" hidden>
+      <div class="body-heading">
+        <h2 id="body-title">Body mode</h2>
+        <button class="body-close" id="body-close" type="button" aria-label="Close Body mode and stop the camera">Close</button>
+      </div>
+      <div class="body-preview" id="body-preview" hidden>
+        <video id="body-video" autoplay muted playsinline aria-label="Mirrored camera preview"></video>
+        <span class="body-preview-dot" id="body-preview-dot" aria-hidden="true" hidden></span>
+      </div>
+      <p class="body-guidance" id="body-guidance">Open your hand to bloom. Make a fist to close the flower.</p>
+      <p class="body-status" id="body-status" role="status" aria-live="polite" aria-atomic="true">Camera is off. Mouse controls are available.</p>
+      <div class="body-actions">
+        <button class="body-enable" id="body-enable" type="button">Enable camera</button>
+        <button class="body-pause" id="body-pause" type="button" hidden>Pause camera</button>
+      </div>
+    </section>

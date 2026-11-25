@@ -2,7 +2,7 @@
 
 Secret Garden is a desktop prototype for NYU ITP Shared Minds. Each thought becomes a glass flower that can bloom, move, connect with other flowers, and retain a history.
 
-**The GitHub submission provides source code, screenshots, and local running instructions. Secret Garden has not been deployed as an online interactive website.** A GitHub HTML file view shows code; use a local preview to interact with the garden.
+**[Open the Secret Garden public demo](https://zixuanlydia.github.io/Shares-Mindes/secret-garden/).** The GitHub Pages release supports planting, local hand tracking, semantic connections, fusion, and growth replay in a desktop browser. Flowers stay in that browser's localStorage; other online visitors do not share the same garden. A GitHub HTML file view shows source code rather than the interactive page.
 
 ## Start the local garden
 
@@ -28,7 +28,7 @@ For a single-user static preview without the shared service, run:
 python3 -m http.server 8000 --bind 127.0.0.1 --directory outputs
 ```
 
-Open **http://127.0.0.1:8000/Secret%20Garden.html**. The HTML can also be opened directly, but browser file-storage restrictions vary. Static preview, direct-file preview, different ports, and the shared service have separate browser storage; existing records do not migrate automatically.
+Open **http://127.0.0.1:8000/Secret%20Garden.html**. The HTML can also be opened directly, but browser file-storage restrictions vary. The public demo, static preview, direct-file preview, different ports, and the shared service have separate browser storage; existing records do not migrate automatically.
 
 Keep **body-assets** and **semantic-assets** beside the HTML. The background and fonts are embedded. Font and model loading does not require a paid service. This version is intended for desktop use.
 
@@ -71,7 +71,7 @@ Click an empty area or **Separate flowers** to split them. The small flower foll
 4. In **Plant a Thought → Grow flower**, the same hand controls shape the draft's bloom and record its opening and closing sequence for planting.
 5. **Pause camera** stops the camera, **Resume camera** starts it again, and **Close** ends tracking. Focus, details, history, text/style steps, and hidden tabs automatically pause the camera.
 
-The host's localhost address can use the camera. Ordinary HTTP Wi-Fi visitor addresses usually cannot; mouse and keyboard controls remain available. See the [browser camera security requirements](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia).
+The public HTTPS demo and the host's localhost address can request camera access. Ordinary HTTP Wi-Fi visitor addresses usually cannot; mouse and keyboard controls remain available. See the [browser camera security requirements](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia).
 
 MediaPipe computes hand landmarks locally. Only video is requested, with audio disabled. Camera frames are not uploaded or saved. Denied permissions, unavailable hardware, or model-loading failure leave the mouse controls usable. Tracking uses the newest frame and smoothing rather than queuing old frames. Very small movement is filtered as noise.
 
@@ -79,7 +79,7 @@ The chosen Body interaction is palm opening and fist closing; the earlier dwell-
 
 ## View history and replay growth
 
-**My Flowers** lists work created by the current browser identity. **Timeline** browses all shared authors by creation time, newest first. Click an entry to reopen the original flower and its details; **Back** returns to the previous list position.
+**My Flowers** lists work created by the current browser identity. **Timeline** browses the current garden by creation time, newest first. In local shared mode, it includes all authors using that service; the public demo contains only this browser's records. Click an entry to reopen the original flower and its details; **Back** returns to the previous list position.
 
 Click **Replay growth** in the details. The camera moves closer and plays the saved bloom samples, including their time, progress, and input source. Pause, restart, or seek through the replay. Long idle periods are compressed into a short presentation. Exiting restores the flower's saved bloom state.
 
@@ -102,7 +102,7 @@ Each flower is an independent JSON record with an ID, author snapshot, original 
 }
 ```
 
-Single-user records use **localStorage**, under `secret-garden:v1`. Shared records persist in **server/data/garden.sqlite3** on the host, while `secret-garden:shared:v1` holds a separate browser cache and retry queue. Stopping and restarting the same server does not clear its database. Preserve that database and the browser identity. Clearing browser site data can remove local-only work or shared ownership credentials; there is no account recovery or cross-device login.
+Single-user records, including the public demo, use **localStorage**, under `secret-garden:v1`. Shared records persist in **server/data/garden.sqlite3** on the local or LAN host, while `secret-garden:shared:v1` holds a separate browser cache and retry queue. The public demo does not connect to that service or a Firebase backend. Stopping and restarting the same server does not clear its database. Preserve that database and the browser identity. Clearing browser site data can remove local-only work or shared ownership credentials; there is no account recovery or cross-device login.
 
 Only authors can save their flowers' positions and growth. Everyone in the shared garden can view thoughts and use presentation interactions. Pending changes are labeled **Waiting to share** and are retried after reconnection. Local-only records are not automatically published into the shared garden. The submission package excludes personal records, session credentials, and test databases.
 
@@ -124,6 +124,6 @@ The roughly 110 MB semantic runtime/model assets load on first use and run local
 | `GardenShared` | Asynchronous shared records, server-issued identity, ownership checks, synchronization, and retries. |
 | `GardenSemantic.embed(texts)` | Calculate sentence vectors independently of flower data. |
 
-Secret Garden has no Firebase connection, paid AI API, generative AI suggestions, UMAP layout, or public deployment. Earlier Week 4 and Week 5 coursework in the course repository separately contains Firebase integration and recorded tests; it should be considered separately from Secret Garden's implementation. Independent Colab/training experiments and Blog/Dashboard materials are also separate deliverables. See the [implementation and course audit](<Secret Garden V1 Audit.md>) for status and verification limits.
+The public release uses GitHub Pages. Alternative Firebase Hosting publication is deferred pending the project owner's two-step verification; Secret Garden has no Firebase backend, paid AI API, generative AI suggestions, or UMAP layout. Earlier Week 4 and Week 5 coursework in the course repository separately contains Firebase integration and recorded tests; it should be considered separately from Secret Garden's implementation. Independent Colab/training experiments and Blog/Dashboard materials are also separate deliverables. See the [implementation and course audit](<Secret Garden V1 Audit.md>) for status and verification limits.
 
 Model and runtime attribution is in [semantic-assets/NOTICE.txt](semantic-assets/NOTICE.txt) and [body-assets/NOTICE.txt](body-assets/NOTICE.txt). Font attribution is in [type-assets/NOTICE.txt](type-assets/NOTICE.txt). These notices link the upstream sources and included licenses.

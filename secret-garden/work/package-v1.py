@@ -8,7 +8,8 @@ root = Path(__file__).resolve().parent.parent
 build = (root / "work/build-preview.py").read_text()
 fragments = re.findall(r'"(__[A-Z_]+__)": "([^"]+)"', build)
 files = {
-    "README.md", "work/build-preview.py", "work/package-v1.py",
+    "README.md", "index.html", "work/build-preview.py", "work/package-v1.py", "work/build-hosting.py",
+    "firebase.json", "hosting/.gitignore", "hosting/README.md", "hosting/build-manifest.json",
     "work/garden-template.html", "work/garden.jpg",
     "work/v1-audit-report.json",
     "server/shared_garden.py", "server/start.command", "server/test_shared_garden.py",

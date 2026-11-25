@@ -1,8 +1,8 @@
 # Secret Garden V1 Development and Course Audit
 
-V1 tests completed November 24, 2026. English documentation updated November 25, 2026. Scope: the existing desktop prototype, its browser-local mode, and its local or LAN shared mode.
+V1 tests completed November 24, 2026. English documentation updated November 25, 2026 for the GitHub Pages release. Recorded test scope: the existing desktop prototype, its browser-local mode, and its local or LAN shared mode.
 
-**The core V1 demonstration passed the recorded browser tests and is ready for a local classroom presentation. Secret Garden has not been deployed as a live website. A GitHub source submission does not provide a click-to-play website.**
+**[Open the Secret Garden public demo](https://zixuanlydia.github.io/Shares-Mindes/secret-garden/).** The GitHub Pages release provides the existing single-user desktop experience, including local hand tracking, semantic discovery, fusion, and browser-local persistence. It has no shared cloud or Firebase backend. The core V1 demonstration passed the recorded local browser tests; those November 24 measurements are retained below.
 
 The November 24 audit rebuilt the existing HTML and tested the interface, data layer, and Python backend. No blocking defect was found that required changes to the flower geometry, camera, or persistence logic. Existing artwork and user records were preserved. Test flowers used separate preview addresses and a temporary database.
 
@@ -99,7 +99,7 @@ The numbering below follows the project's eleven-theme checklist. In the officia
 | 2 Alignment | Preset words are rule based. Generative associations, word editing, and AI-driven appearance suggestions are not implemented. Manual appearance choices work. | Source is uploaded to [the course repository](https://github.com/ZixuanLydia/Shares-Mindes/tree/secret-garden-v1/secret-garden). Dashboard or Profile submission is unverified. An API is an exploration route, not a requirement to buy a paid service. [Assignment](https://itpima.web.app/smf26/alignment-with-neural-networks/) |
 | 3 Implicit / Explicit | Complete: independent JSON includes thought, author, appearance, position, time, and growth. Objects can be controlled and combined. MediaPipe is real non-text ML input, using a pretrained model. | Blog documentation of the exploration remains a separate submission check. |
 | 4 Time | Complete: creation time, persistence, loading, Timeline, growth samples, replay, and refresh recovery. Secret Garden uses localStorage and SQLite, not Firebase. | The earlier [Week 4](https://github.com/ZixuanLydia/Shares-Mindes/blob/main/week-04/README.md) and [Week 5](https://github.com/ZixuanLydia/Shares-Mindes/blob/main/week-05/README.md) assignments already contain Firebase integration code and documented live-test results. Therefore, Firebase should not be marked absent from the student's entire coursework. Those older live services were not re-tested in this audit. [Time assignment](https://itpima.web.app/smf26/time/) |
-| 5 Social | Complete locally: independent author identities, nicknames, My Flowers, all-author Timeline, author details, real two-browser sharing, and discovery across authors. Timeline supplies all-artwork browsing without a separate All Flowers tab. | Public hosting, formal accounts, and cross-device identity recovery are not implemented in Secret Garden. Formal login is not the only identity route in the assignment. [Assignment](https://itpima.web.app/smf26/social/) |
+| 5 Social | Complete locally: independent author identities, nicknames, My Flowers, all-author Timeline, author details, real two-browser sharing, and discovery across authors. Timeline supplies all-artwork browsing without a separate All Flowers tab. | The GitHub Pages demo is publicly hosted, with a separate garden in each browser. Internet-wide sharing, formal accounts, and cross-device identity recovery are not implemented in Secret Garden. Formal login is not the only identity route in the assignment. [Assignment](https://itpima.web.app/smf26/social/) |
 | 6 HyperSpace | Complete: real 384-dimensional multilingual embeddings, cosine ranking, cross-language discovery, similarity-driven gathering, and navigation through flower selection. UMAP is not implemented; four gathering slots with adjusted distances are not dimensional reduction. | The UMAP experiment or its agreed alternative remains to be documented. [Assignment](https://itpima.web.app/smf26/handles-in-hyperspace/) |
 | 7 Spatial | Complete: 3D petals, independent positions and depths, limited camera motion, parallax, overhead focus, and distance expressing connection strength. | The hybrid scene does not require a fully modeled free-roaming world. |
 | 8 Body | Camera access, real model loading, local inference, lifecycle controls, and mouse fallback passed. Live human hand feel remains unverified. | A real palm-and-fist demonstration can provide further class or blog evidence. |
@@ -143,7 +143,7 @@ Presentation screenshots were refreshed on November 25 with English example thou
 
 ### Verification limits
 
-The shared browser test used two independent browsers on one computer, not two physical Wi-Fi devices. Local-mode browser testing used static HTTP; direct-file behavior was covered by the same code and data tests. Live human gesture feel, large flower counts, other operating systems, and public HTTPS access remain outside the passed scope.
+The November 24 shared browser test used two independent browsers on one computer, not two physical Wi-Fi devices. Local-mode browser testing used static HTTP; direct-file behavior was covered by the same code and data tests. Live human gesture feel, large flower counts, other operating systems, and public HTTPS access were outside that recorded test scope. The public release does not extend these historical results to cross-device or cross-network sharing.
 
 ## 5 Remaining work
 
@@ -157,7 +157,8 @@ The shared browser test used two independent browsers on one computer, not two p
 | Coursework | Relate earlier Week 4 and Week 5 Firebase evidence to the Time and Social requirements. | Course evidence | Secret Garden does not need an unrequested cloud setup for today's demonstration. |
 | Coursework | Complete and retain a Colab or self-training experiment. | Level experiment | Can be separate from the website. |
 | Coursework | Verify sketches, blog posts, Manifesto, Proposal, NotebookLM, and Dashboard links. | Submission materials | Determines assignment completeness, not local website operation. |
-| Before publication | Choose and authorize hosting, shared-backend storage, HTTPS, and cross-network acceptance tests. | Deployment | No public Secret Garden website exists yet. |
+| For internet sharing | Choose shared-backend storage and verify cross-network behavior over HTTPS. | Future shared deployment | The public GitHub Pages demo is single-user. Existing Python SQLite sharing remains local or LAN only. |
+| Deferred | Complete the project owner's two-step verification before alternative Firebase Hosting publication. | Hosting option | GitHub Pages supplies the current public demo; Firebase Hosting does not itself add a shared backend. |
 
 ## 6 Running and submitting V1
 
@@ -173,8 +174,10 @@ Keep **body-assets** and **semantic-assets** with the HTML. They provide real lo
 
 ### GitHub submission and live access
 
-The project source is uploaded under `secret-garden` on the `secret-garden-v1` branch of [Shares-Mindes](https://github.com/ZixuanLydia/Shares-Mindes). That branch is now the repository's default view, so the original course repository link shows this project alongside the earlier assignments. The existing GitHub Pages site still publishes from `main`, which does not contain Secret Garden.
+The project source is uploaded under `secret-garden` on the `secret-garden-v1` branch of [Shares-Mindes](https://github.com/ZixuanLydia/Shares-Mindes). That branch is the repository's default source view, alongside the earlier assignments. The public demo is available through the existing GitHub Pages route at **[Secret Garden](https://zixuanlydia.github.io/Shares-Mindes/secret-garden/)**.
 
-A teacher can browse the source, English instructions, audit, and screenshots on GitHub, or download the project and run it locally. Opening an HTML file in GitHub's file viewer displays source; it does not launch the interactive garden. Click-to-play remote access requires a separate authorized deployment.
+A teacher can open the public demo directly, browse the source, English instructions, audit, and screenshots on GitHub, or download the project for local shared use. Opening an HTML file in GitHub's file viewer displays source; it does not launch the interactive garden. Public-demo records stay in the visitor's browser and do not synchronize with other visitors or the local SQLite service.
+
+Alternative Firebase Hosting publication remains deferred pending the project owner's two-step verification. There is no Firebase backend in this release. Public access to the prototype does not establish completion of the separate coursework and submission checks listed above.
 
 The V1 handoff package contains the app, local model resources, Python shared service, build sources, tests, and documentation. It excludes private databases and browser sessions. Preserve the directory structure after extraction.

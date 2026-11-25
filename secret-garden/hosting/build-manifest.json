@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "public_directory": "hosting/public",
+  "source_document": "outputs/Secret Garden.html",
+  "file_count": 47,
+  "total_bytes": 123158679,
+  "files": [
+    {
+      "path": "body-assets/LICENSE.txt",
+      "bytes": 12331,
+      "sha256": "8707eef0533987efc5b155d64761eeb6e20793f50b9bd1a68dad1cf4719d0ed8"
+    },
+    {
+      "path": "body-assets/NOTICE.txt",
+      "bytes": 889,
+      "sha256": "71d984006e14df9aa9d71f168f287ef6c169f78a7c0d89ec27b5fd70f7d0d100"
+    },
+    {
+      "path": "body-assets/hand-model-data.js",
+      "bytes": 7751827,
+      "sha256": "9612b769187b25bb4ca2a0c3825c2b2df470fe8d181d47050b5137ec1deb12ad"
+    },
+    {
+      "path": "body-assets/vision-wasm-data.js",
+      "bytes": 3866238,
+      "sha256": "eabfa63416631d15f4f80c567e7feef2964c8bc6896309731cbcf15fa9edf3a1"
+    },
+    {
+      "path": "body-assets/vision.js",
+      "bytes": 342478,
+      "sha256": "06927b1b52e5ceff8a4ae649383de2e7e394ada933c26cb6962229b281d88431"
+    },
+    {
+      "path": "index.html",
+      "bytes": 821499,
+      "sha256": "f383c1f4eedf0685793efdce150abc4011f2a158c121cd57e7d91f0e08136b79"
+    },
+    {
+      "path": "semantic-assets/MODEL-CARD.md",
+      "bytes": 3888,
+      "sha256": "1e98ea05b0de579fcaad3d625b62ea55647142ed674d5f5ebf1440e4bbbb6f23"
+    },
+    {
+      "path": "semantic-assets/MODEL-LICENSE.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "semantic-assets/NOTICE.txt",
+      "bytes": 1209,
+      "sha256": "581678202602131bc6e971a0b069d49ec99e68a10e5e6e7908435f5d1c6d2f4a"
+    },
+    {
+      "path": "semantic-assets/ONNX-RUNTIME-LICENSE.txt",
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "path": "semantic-assets/TRANSFORMERS-LICENSE.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "semantic-assets/manifest.json",
+      "bytes": 2143,
+      "sha256": "0142fa76794d2479b87e7c97a7495eb2447f9e90b4d62f98d321daa037d9739c"
+    },
+    {
+      "path": "semantic-assets/resource-00-00.js",
+      "bytes": 4194339,
+      "sha256": "b5fe94b41464fb9bc6fca395efc5b8203f835a377ed75d82cf66443e59697c30"
+    },
+    {
+      "path": "semantic-assets/resource-00-01.js",
+      "bytes": 2562627,
+      "sha256": "60001cf697d594e4a43936f61ba285e2bbcf0e54ca69c321a32a29ba31a1e6f3"
+    },
+    {
+      "path": "semantic-assets/resource-01-00.js",
+      "bytes": 539,
+      "sha256": "c4d534339c63aa83f1ae7512560b1cb586a963b8f00b424f6148ce9294f1342d"
+    },
+    {
+      "path": "semantic-assets/resource-02-00.js",
+      "bytes": 379,
+      "sha256": "0c8ece91a513ede8b3f0fcf4b9130ab39b6ce85b7c0af64c52ae7be5cde56379"
+    },
+    {
+      "path": "semantic-assets/resource-03-00.js",
+      "bytes": 239,
+      "sha256": "528882ceb6d2d4511172171d01e61b32ae2302f72bd51295cdcf7abe78d30e2f"
+    },
+    {
+      "path": "semantic-assets/resource-04-00.js",
+      "bytes": 4194339,
+      "sha256": "d55b6e3b9526aaa0ca0b57ab514db4c46bff2f90509183e2757c47eb80338c89"
+    },
+    {
+      "path": "semantic-assets/resource-04-01.js",
+      "bytes": 1148339,
+      "sha256": "01d5daa0af67c65bae3931137b91b85d3d78b53685b9515c433f6e5f0f4dee03"
+    },
+    {
+      "path": "semantic-assets/resource-05-00.js",
+      "bytes": 4194339,
+      "sha256": "a60d73dda235baa46ad05f85a779664e911deb6f54144270851237c05dfdc838"
+    },
+    {
+      "path": "semantic-assets/resource-05-01.js",
+      "bytes": 4194339,
+      "sha256": "b07a0716cbd2c22c55e988b96deffea98ca0830e327a9b998b72efe335ee6373"
+    },
+    {
+      "path": "semantic-assets/resource-05-02.js",
+      "bytes": 4194339,
+      "sha256": "14d1fed9451b5837f1dfa2426ff2c788e052018960f80fafffdb361dadaad490"
+    },
+    {
+      "path": "semantic-assets/resource-05-03.js",
+      "bytes": 4194339,
+      "sha256": "a384c33af80d6db3cc85dac30e9a9e2c21760e2c0863d4d9ca96f7bcc62df6e9"
+    },
+    {
+      "path": "semantic-assets/resource-05-04.js",
+      "bytes": 4194339,
+      "sha256": "25abfd2aaa7506a2f2e780589d19e07398cb8d1ab7b93bef6787b7fb66723f45"
+    },
+    {
+      "path": "semantic-assets/resource-05-05.js",
+      "bytes": 4194339,
+      "sha256": "f9f045672ed180cc5a73f21c75b5071a64db2e57e026e9c520f0b9985b5aeeea"
+    },
+    {
+      "path": "semantic-assets/resource-05-06.js",
+      "bytes": 4194339,
+      "sha256": "f33198cc998ac1d12c9db5722eee27054fae8d5f3ecfb753ca3d47d8fbcc5273"
+    },
+    {
+      "path": "semantic-assets/resource-05-07.js",
+      "bytes": 4194339,
+      "sha256": "2c703a7ed03fcf64b67ee4bebee1ede162eced26a8f5e2606e3944171547533e"
+    },
+    {
+      "path": "semantic-assets/resource-05-08.js",
+      "bytes": 4194339,
+      "sha256": "bf55f7db6d36d386b6c5077def17bd86e666bbf5d8bd77c4f12686fc14106fdb"
+    },
+    {
+      "path": "semantic-assets/resource-05-09.js",
+      "bytes": 4194339,
+      "sha256": "e4428442d48b7c9595eec283ad430684e7ebbe3e1310cf9be72abd9f4551e430"
+    },
+    {
+      "path": "semantic-assets/resource-05-10.js",
+      "bytes": 4194339,
+      "sha256": "b3b04d5311a6e190cf813b99e31698d749785882b2697630a9a7f852dc2734ae"
+    },
+    {
+      "path": "semantic-assets/resource-05-11.js",
+      "bytes": 4194339,
+      "sha256": "a910488812d252cce90abba3c7871cbdb38b875c937d9e7bea7f899b27cdcb07"
+    },
+    {
+      "path": "semantic-assets/resource-05-12.js",
+      "bytes": 4194339,
+      "sha256": "0b732d4eb74786306df401122db80c97116631d7ce98aa19668b69ffab3c893c"
+    },
+    {
+      "path": "semantic-assets/resource-05-13.js",
+      "bytes": 4194339,
+      "sha256": "b3a3596568c6af49faa208b5dec4f6f991977202c787591e115ff835503d07f1"
+    },
+    {
+      "path": "semantic-assets/resource-05-14.js",
+      "bytes": 4194339,
+      "sha256": "b97c37c1540cb2d7822724962c45b1696f270c3fbca46015a931b026fd09a484"
+    },
+    {
+      "path": "semantic-assets/resource-05-15.js",
+      "bytes": 4194339,
+      "sha256": "662c3bd52525979bd9a4acda7bd38fe4546bfa3599f5f92ba9849e60c4b742f1"
+    },
+    {
+      "path": "semantic-assets/resource-05-16.js",
+      "bytes": 4194339,
+      "sha256": "11a3ff18e1f9f4ae7d5756a335c44abed9113ff69ffc87ead1c32acc5d8abfb5"
+    },
+    {
+      "path": "semantic-assets/resource-05-17.js",
+      "bytes": 4194339,
+      "sha256": "bf8f1e09b84a05524d32649b1eac4a2eea4b4bbafe963c13a2b5ec8e772c4c60"
+    },
+    {
+      "path": "semantic-assets/resource-05-18.js",
+      "bytes": 4194339,
+      "sha256": "84456d281b91d3de3578a669cac323a72d9d2423e7f6b4253f6c04bbfd81811a"
+    },
+    {
+      "path": "semantic-assets/resource-05-19.js",
+      "bytes": 4194339,
+      "sha256": "a0637b17528f785971a4b76d166024956be9d8f7b2948eca0d74639cacd4db53"
+    },
+    {
+      "path": "semantic-assets/resource-05-20.js",
+      "bytes": 4194339,
+      "sha256": "c0c30c607030c893b7dd6c5e7a6a6af81e64ad62a5e71f7d3a056f8e0cff0244"
+    },
+    {
+      "path": "semantic-assets/resource-05-21.js",
+      "bytes": 4194339,
+      "sha256": "7b3b6e8cb2de7e770d93654addb73f411cbe97de4c6dd8c45e2b4d9e8cb05b5b"
+    },
+    {
+      "path": "semantic-assets/resource-05-22.js",
+      "bytes": 4194339,
+      "sha256": "17bb109108a1512702eaf955ab4c70d15d25639282d26f7c9156ccaa8e0af28f"
+    },
+    {
+      "path": "semantic-assets/resource-05-23.js",
+      "bytes": 885227,
+      "sha256": "37ef8d4259de9204319d2964796705dc79b13ba3b27ac5336bb9a29d7555d643"
+    },
+    {
+      "path": "semantic-assets/transformers-runtime.js",
+      "bytes": 866851,
+      "sha256": "2f9b759a7e937ff5b6786992fa1568ca0b0dbd50ae70b1b8014b405b9bef7c77"
+    },
+    {
+      "path": "type-assets/DM-Sans-OFL.txt",
+      "bytes": 4482,
+      "sha256": "9af36190332437f5ecd09974de43c1f7c77a310a996cdd8ceb25628b458840e1"
+    },
+    {
+      "path": "type-assets/Instrument-Serif-OFL.txt",
+      "bytes": 4405,
+      "sha256": "129ed7618959716959f2941fdd5b49e0ad6e6c1d78726761786a00253d865521"
+    },
+    {
+      "path": "type-assets/NOTICE.txt",
+      "bytes": 825,
+      "sha256": "f2543009c8bddfbeaab3397fd533e289295df2c686c71c88f9eea8a8afc0c525"
+    }
+  ]
+}

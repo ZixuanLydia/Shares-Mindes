@@ -1,24 +1,35 @@
 # Secret Garden
 
-NYU ITP Shared Minds 桌面端互动原型。将想法种成玻璃花，通过手势、俯视、语义关联、双色融合与时间回看探索作品。
+**A Garden of Shared Thoughts** is a desktop interaction project for NYU ITP Shared Minds. Plant a thought as a glass flower, shape its bloom with your hand, and explore connections through camera movement, gathering flowers, two-color fusion, and growth replay.
 
-## 运行
+**This is a source-code submission with a local preview. Secret Garden is not deployed as a public, click-to-play website.** Viewing its HTML on GitHub displays the source. Download or clone the repository and follow the steps below to run it.
 
-- macOS：双击 `outputs/Start Shared Garden.command`，保持终端开启。需要 Python 3。
-- 其他系统／命令行：在项目根目录运行 `python3 server/shared_garden.py`，打开终端打印的本地地址（默认 `http://127.0.0.1:8851/`）。
-- 可信局域网共享：`python3 server/shared_garden.py --host 0.0.0.0`，另一台电脑使用终端打印的 Wi-Fi 地址。
-- 单人静态版：`python3 -m http.server 8000 --bind 127.0.0.1 --directory outputs`，打开 `http://127.0.0.1:8000/Secret%20Garden.html`。
+## Run locally
 
-保留 `outputs/body-assets` 和 `outputs/semantic-assets`。主机 localhost 支持摄像头；普通 HTTP 局域网访客使用鼠标。没有公网部署。
+Requires Python 3. Open a terminal in the `secret-garden` project folder, where this README is located, and run:
 
-## 实现范围
+```sh
+python3 server/shared_garden.py
+```
 
-真实技术包括程序三维花瓣、MediaPipe 本地手部追踪、多语言 MiniLM 句向量、语义相似度、JSON、localStorage、SQLite 与独立作者的局域网共享。联想词是明确标注的预设词，融合句是本地规则组合；没有生成式 AI、UMAP 或 Firebase。
+Open **http://127.0.0.1:8851/** and keep the terminal running. On macOS, you can instead double-click `outputs/Start Shared Garden.command`.
 
-作品持续保存在浏览器或 `server/data/garden.sqlite3`。请保留原数据库和浏览器身份。发行包不包含个人作品或会话。
+For trusted Wi-Fi sharing, run `python3 server/shared_garden.py --host 0.0.0.0` and give the second computer the **Invite on this Wi-Fi** address printed in the terminal. For two people on one computer, use two independent browsers. The host can use the camera on localhost; ordinary HTTP Wi-Fi visitors use mouse controls.
 
-## 构建与核查
+For a single-user static preview, run `python3 -m http.server 8000 --bind 127.0.0.1 --directory outputs` and open **http://127.0.0.1:8000/Secret%20Garden.html**.
 
-修改 `work` 中源文件后运行 `python3 work/build-preview.py`，生成 `outputs/Secret Garden.html`。已有 Node 测试位于 `work/*qa.cjs`，后端测试从 `server` 目录运行 `python3 -B -m unittest test_shared_garden.py`。
+Keep `outputs/body-assets` and `outputs/semantic-assets` with the HTML. They contain the local hand-tracking and sentence-embedding models.
 
-逐项功能、测试结果、课程缺口及提交说明见 [V1 审核报告](<outputs/Secret Garden V1 Audit.md>)；操作细节见 [使用说明](outputs/使用与九周扩展.md)。
+## What is implemented
+
+The project uses procedural 3D petals, MediaPipe hand tracking, multilingual MiniLM sentence embeddings, JSON, localStorage, and a local SQLite service with separate author identities. Association words are labeled presets, and fusion sentences use local composition rules. There is no generative AI service, UMAP layout, or Firebase connection in Secret Garden.
+
+Flower records persist in the browser or `server/data/garden.sqlite3`. Keep the database and browser identity to retain work and ownership. The submission package contains no personal flower database or session credentials.
+
+## Build and documentation
+
+After editing source files in `work`, run `python3 work/build-preview.py` to rebuild `outputs/Secret Garden.html`. Node checks are in `work/*qa.cjs`; from `server`, run `python3 -B -m unittest test_shared_garden.py` for the backend checks.
+
+- [User guide and demonstration steps](outputs/USER_GUIDE.md)
+- [V1 implementation and course audit](<outputs/Secret Garden V1 Audit.md>)
+- [Model and runtime licenses](outputs/semantic-assets/NOTICE.txt), [hand-tracking notice](outputs/body-assets/NOTICE.txt), and [font licenses](outputs/type-assets/NOTICE.txt)

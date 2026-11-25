@@ -2,7 +2,12 @@
   "date": "2026-11-24",
   "scope": "Existing desktop Secret Garden V1; local static and local shared; no deployment",
   "outcome": "Core local classroom demonstration passed; no P0 product-code defect found",
-  "source_changes": ["README.md", "outputs/使用与九周扩展.md", "outputs/Secret Garden V1 Audit.md", "work/package-v1.py"],
+  "source_changes": [
+    "README.md",
+    "outputs/USER_GUIDE.md",
+    "outputs/Secret Garden V1 Audit.md",
+    "work/package-v1.py"
+  ],
   "rendering_source_changed": false,
   "user_data_modified_or_cleared": false,
   "manual_flows": [
@@ -24,11 +29,20 @@
     "Final browser logs show no blocking script errors or warnings"
   ],
   "node_suites": [
-    "work/intro-qa.cjs", "work/garden-history-qa.cjs", "work/shared-data-qa.cjs",
-    "work/shared-ui-qa.cjs", "work/shared-scene-qa.cjs", "work/position-data-qa.cjs",
-    "work/garden-drag-qa.cjs", "work/garden-position-scene-qa.cjs", "work/body-hand-qa.cjs",
-    "work/body-continuity-qa.cjs", "work/semantic-connections-qa.cjs",
-    "work/semantic-motion-qa.cjs", "work/semantic-focus-qa.cjs", "work/connection-fusion-qa.cjs"
+    "work/intro-qa.cjs",
+    "work/garden-history-qa.cjs",
+    "work/shared-data-qa.cjs",
+    "work/shared-ui-qa.cjs",
+    "work/shared-scene-qa.cjs",
+    "work/position-data-qa.cjs",
+    "work/garden-drag-qa.cjs",
+    "work/garden-position-scene-qa.cjs",
+    "work/body-hand-qa.cjs",
+    "work/body-continuity-qa.cjs",
+    "work/semantic-connections-qa.cjs",
+    "work/semantic-motion-qa.cjs",
+    "work/semantic-focus-qa.cjs",
+    "work/connection-fusion-qa.cjs"
   ],
   "node_suites_passed": 14,
   "backend_tests_passed": 8,
@@ -38,9 +52,24 @@
     "connection_geometry_cases": 2700,
     "body_chain": "Synthetic 12Hz detector/60Hz draw produced sway, pollen, echo; not live-hand evidence"
   },
-  "real": ["MediaPipe", "MiniLM embeddings", "SQLite sharing", "localStorage", "procedural 3D petals"],
-  "rule_based": ["Preset associations", "fusion sentence composition"],
-  "not_implemented": ["Generative AI suggestions", "UMAP", "Firebase", "public hosting", "cross-device account recovery"],
+  "real": [
+    "MediaPipe",
+    "MiniLM embeddings",
+    "SQLite sharing",
+    "localStorage",
+    "procedural 3D petals"
+  ],
+  "rule_based": [
+    "Preset associations",
+    "fusion sentence composition"
+  ],
+  "not_implemented": [
+    "Generative AI suggestions",
+    "UMAP",
+    "Firebase",
+    "public hosting",
+    "cross-device account recovery"
+  ],
   "verification_limits": [
     "No live human palm/fist sequence or real-hand feel assessment this round",
     "No large flower-count FPS stress test",
@@ -48,12 +77,39 @@
     "Static HTTP UI tested; direct file persistence covered by data code/tests",
     "Course writings, Github/Dashboard and NotebookLM submissions not inspected"
   ],
-  "qa_ports": [8852, 8853],
+  "qa_ports": [
+    8852,
+    8853
+  ],
   "production_port": 8851,
   "qa_database": "/private/tmp/secret-garden-v1-audit-20261124.sqlite3",
   "proof": [
-    "outputs/Secret Garden V1 garden.jpg", "outputs/Secret Garden V1 focus.jpg",
-    "outputs/Secret Garden V1 connections.jpg", "outputs/Secret Garden V1 fusion.jpg",
+    "outputs/Secret Garden V1 garden.jpg",
+    "outputs/Secret Garden V1 focus.jpg",
+    "outputs/Secret Garden V1 connections.jpg",
+    "outputs/Secret Garden V1 fusion.jpg",
     "outputs/Secret Garden V1 timeline.jpg"
-  ]
+  ],
+  "presentation_update": {
+    "date": "2026-11-25",
+    "changes": [
+      "English project README, user guide and implementation/course audit",
+      "English example thoughts and authors in all five presentation screenshots",
+      "Explicit en-US dates in details, history, focus and growth replay"
+    ],
+    "checks_passed": [
+      "work/garden-history-qa.cjs",
+      "work/shared-ui-qa.cjs",
+      "work/semantic-focus-qa.cjs"
+    ],
+    "browser_checks": [
+      "Three English flowers planted by two independent browser identities",
+      "English Timeline date and focus author/time verified",
+      "Real semantic discovery connected family-dinner thoughts and excluded unrelated train ticket",
+      "Native drag fusion showed an English composed sentence and both original thoughts"
+    ],
+    "user_records_preserved": true,
+    "deployment_performed": false,
+    "prior_coursework_language": "Week 3–5 interfaces and READMEs are English; week-04/FIREBASE-SETUP.md remains a Chinese maintenance note"
+  }
 }

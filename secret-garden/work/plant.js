@@ -5,7 +5,7 @@
   const byId = (id) => document.getElementById(id);
   const forms = { cup: "Cup", flared: "Flared", tall: "Tall" };
   const colors = { peach: "Peach", lilac: "Lilac", blue: "Ice blue" };
-  const dateFormat = new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "medium" });
+  const dateFormat = new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "medium" });
   const sharedView = () => window.GardenData.status
     ? window.GardenData.status.mode !== "local" : Boolean(window.GardenData.isShared);
 

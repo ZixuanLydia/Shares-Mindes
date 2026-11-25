@@ -12,7 +12,7 @@
     body: "Body movement",
     snapshot: "Saved state"
   };
-  const dateFormat = new Intl.DateTimeFormat(undefined, {
+  const dateFormat = new Intl.DateTimeFormat("en-US", {
     dateStyle: "medium",
     timeStyle: "medium"
   });

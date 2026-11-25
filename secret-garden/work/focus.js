@@ -16,7 +16,7 @@
     const t = clamp(amount);
     return t * t * (3 - 2 * t);
   };
-  const dateFormat = new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short" });
+  const dateFormat = new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short" });
   const motes = [
     [0.27, 0.29, 0.9], [0.72, 0.57, 1.1], [1.46, 0.39, 0.7], [2.12, 0.64, 1.3],
     [3.03, 0.44, 0.9], [3.74, 0.30, 0.8], [4.81, 0.53, 1.2], [5.64, 0.69, 0.7]

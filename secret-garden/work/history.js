@@ -3,9 +3,9 @@
   "use strict";
 
   const byId = (id) => document.getElementById(id);
-  const dayFormat = new Intl.DateTimeFormat(undefined, { dateStyle: "long" });
-  const dateFormat = new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short" });
-  const timeFormat = new Intl.DateTimeFormat(undefined, { timeStyle: "medium" });
+  const dayFormat = new Intl.DateTimeFormat("en-US", { dateStyle: "long" });
+  const dateFormat = new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short" });
+  const timeFormat = new Intl.DateTimeFormat("en-US", { timeStyle: "medium" });
   const colorNames = { peach: "Peach", lilac: "Lilac", blue: "Ice blue" };
   const formNames = { cup: "Cup", flared: "Flared", tall: "Tall" };
   const sharedView = () => window.GardenData.status

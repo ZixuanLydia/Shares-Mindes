@@ -1,171 +1,180 @@
-# Secret Garden V1 开发状态与课程审核
+# Secret Garden V1 Development and Course Audit
 
-核对日期：2026 年 11 月 24 日。范围为现有电脑端项目、本地单人版及本机／局域网共享版。
+V1 tests completed November 24, 2026. English documentation updated November 25, 2026. Scope: the existing desktop prototype, its browser-local mode, and its local or LAN shared mode.
 
-**结论：V1 的核心展示流程已通过本轮实际操作测试，适合在本地课堂演示。它还不是可供老师远程直接访问的公开网站，也不代表所有课程实验和提交材料均已完成。**
+**The core V1 demonstration passed the recorded browser tests and is ready for a local classroom presentation. Secret Garden has not been deployed as a live website. A GitHub source submission does not provide a click-to-play website.**
 
-本轮重新构建现有 HTML，完成浏览器、数据与后端测试，修正课程进度说明；没有发现需要修改花朵、相机或保存逻辑的 P0 故障，因此保留当前产品代码与视觉。没有清除原有 localStorage、替换原作品数据库、配置 Firebase、购买服务或部署网站。测试作品使用独立地址和临时数据库。
+The November 24 audit rebuilt the existing HTML and tested the interface, data layer, and Python backend. No blocking defect was found that required changes to the flower geometry, camera, or persistence logic. Existing artwork and user records were preserved. Test flowers used separate preview addresses and a temporary database.
 
-## 状态说明
+For practical setup and controls, see the [User Guide](USER_GUIDE.md).
 
-- ✅ 已实现且本轮测试通过。下文区分浏览器操作、数据测试和模型测试。
-- ⚠️ 部分覆盖、有使用条件，或尚未完成对应的实体／规模测试。
-- ❌ 尚未实现，或独立课程成果尚未提供。
-- 🔧 使用本地预设或规则组合；不能声称是生成式 AI 输出。
+## Status key
 
-## 1 网站逐项核查
+- **Complete**: implemented and passed the stated test scope.
+- **Partial**: implemented with a limitation, or a corresponding physical or scale test remains outstanding.
+- **Not implemented**: absent from this prototype or no separate experimental result has been supplied.
+- **Rule based**: working preset or composition logic, not generative AI output.
 
-### A 基础体验
+## 1 Website feature audit
 
-| 项目 | 状态 | 当前行为与实测结果 |
+### A Basic experience
+
+| Item | Status | Current behavior and evidence |
 | --- | --- | --- |
-| Welcome 正常进入花园 | ✅ | 本地与共享页面均正常打开；每次刷新重播标题后淡出，提前操作可结束开场。开场时序、减少动态效果和保存数据隔离测试通过。 |
-| 昵称输入与保存 | ✅ | 新作品保留昵称快照；第二次种植自动带入昵称。刷新后详情仍显示正确作者。 |
-| Plant a Thought 输入 | ✅ | 空输入被阻止；有效输入可进入选型；关闭草稿不会种下额外作品。 |
-| AI 联想词展示 | 🔧 | 界面已经写明 Preset associations。当前依据文字规则给出预设词，不是文字生成模型。 |
-| 联想词选择、编辑 | ❌ | 当前仅展示，不能逐词选择或修改，也不会自动决定外观。归入 P2。 |
-| 选择花型、颜色及参数 | ✅ | Cup／Flared／Tall、Peach／Lilac／Ice blue 和开放程度可选择。尺寸与初始位置由程序分配，没有独立尺寸编辑控件。 |
-| 花朵生成与预览 | ✅ | 选型、选色和 Grow 预览可用；返回选型后可继续 Grow。 |
-| 花苞到盛开动画 | ✅ | Grow 键盘范围调整、鼠标向上拖动（0% → 56%）及示范花播放、暂停、阶段按钮、重置均通过。阶段按钮会平滑过渡。 |
-| Plant in Garden | ✅ | 单人版与两位共享访客均实际种下作品。 |
-| 新花正确显示 | ✅ | 不同作者、颜色、花型和开放度在场景中正确显示；未提交草稿不进入作品集合。 |
-| 刷新恢复用户作品 | ✅ | 单人版刷新后原文、昵称、花型、颜色、60% 开放度和生长记录恢复；共享版双方刷新后恢复三朵作品。 |
+| Welcome and entry | Complete | Local and shared pages open normally. The title appears and fades on each refresh; interaction can dismiss it early. Timing, reduced motion, and separation from saved flower data passed tests. |
+| Nickname entry and persistence | Complete | Each flower stores its author's nickname at creation. A later planting reuses the nickname, and details retain it after refresh. |
+| Plant a Thought input | Complete | Empty input is rejected. Valid text reaches styling. Closing an unfinished draft does not plant an extra flower. |
+| Suggested associations | Rule based | The interface explicitly labels them **Preset associations**. Text rules choose preset words; no text generation model produces them. |
+| Association selection and editing | Not implemented | Words are displayed but cannot be individually selected or edited. They do not automatically determine appearance. This remains a later feature. |
+| Flower form, color, and parameters | Complete | Cup, Flared, and Tall forms; Peach, Lilac, and Ice blue colors; and bloom amount are selectable. Size and initial position are assigned by the program rather than a separate size editor. |
+| Generation and preview | Complete | Shape, color, and Grow previews work. Returning to styling and continuing to Grow works. |
+| Bud-to-bloom animation | Complete | Keyboard adjustment, upward mouse dragging from 0% to 56%, and the demo's play, pause, stage, and reset controls passed. Stage changes animate smoothly. |
+| Plant in Garden | Complete | A local user and two independent shared visitors successfully planted flowers. |
+| New flowers in the scene | Complete | Authors, colors, forms, and openness render correctly. Unsubmitted drafts stay outside the saved collection. |
+| Refresh recovery | Complete | Local text, nickname, form, color, 60% openness, and growth history recovered. Both shared visitors recovered all three test flowers after refresh. |
 
-### B 视觉与空间
+### B Visual style and space
 
-| 项目 | 状态 | 当前行为与实测结果 |
+| Item | Status | Current behavior and evidence |
 | --- | --- | --- |
-| 玻璃花与既有视觉一致 | ✅ | 本轮未改材质、几何或整体排版；已截图核对花园、俯视和双色融合。 |
-| 前景、中景、远景深度 | ✅ | 背景图、前景遮罩、视差层和独立花朵深度共同构成空间。 |
-| 镜头移动与视差 | ✅ | Parallax 开关可用，花园与聚焦运镜均正常。 |
-| 自然摇摆 | ✅ | 花园绘制保留轻微连续摆动，相关数值与渲染测试通过。没有本轮 FPS 数值结论。 |
-| 鼠标悬停高亮 | ✅ | 原生指针移入未选中花，悬停生效，光晕透明度渐变到 0.66；未误触发聚焦。 |
-| 花朵独立选中 | ✅ | 普通花、示范花、关联花与历史条目都能独立打开；两位作者的详情与属性正确。 |
-| 数量增加后流畅 | ⚠️ | 本轮浏览器验收使用三朵共享作品和示范花。已有小花缓存、像素倍率限制和最多四朵关联花，但没有进行几十／上百朵的压力测试。 |
+| Existing glass-flower style | Complete | The audit preserved material, geometry, and typography. Garden, overhead, and two-color fusion views were checked in screenshots. |
+| Foreground, middle ground, and background depth | Complete | A background image, foreground mask, parallax layers, and independent flower depths create the layered space. |
+| Camera movement and parallax | Complete | The Parallax toggle and garden-to-focus movement work. |
+| Natural sway | Complete | Subtle continuous sway remains active. Related numerical and rendering checks passed; this is not an FPS benchmark. |
+| Hover highlight | Complete | A native pointer hover over an unselected flower produced a soft halo, reaching opacity 0.66 without accidentally entering focus. |
+| Independent selection | Complete | Planted flowers, the demo flower, related flowers, and history entries open independently with the correct author and properties. |
+| Performance as flower count grows | Partial | Browser acceptance used three shared flowers plus the demo. Small-flower caching, pixel-density limits, and a maximum of four related flowers are implemented. Tens or hundreds of flowers have not been stress-tested. |
 
-**模型性质：**花瓣是程序生成的真实三维曲面，包含厚度、圆边和褶皱，再投影到 Canvas 2D；俯视使用同一模型连续重绘。花园背景为静态图像与分层视差，整体属于混合场景，不是完整自由漫游的三维世界。本轮无须新增多视角图片或重做所有花型。
+The petals are **procedural three-dimensional surfaces**, with thickness, rounded edges, and folds, projected onto Canvas 2D. The overhead view redraws the same geometry continuously. The background uses a static image and parallax layers. This is a hybrid scene, not a fully modeled world with free roaming. The tested effect does not require replacement flower images for different viewing angles.
 
 ### C Flower Focus
 
-| 项目 | 状态 | 当前行为与实测结果 |
+| Item | Status | Current behavior and evidence |
 | --- | --- | --- |
-| 点击后平滑靠近 | ✅ | 本轮分别打开普通花和示范花，进入约两秒的聚焦过程。 |
-| 从侧面逐渐升高 | ✅ | 使用相机轨迹连续改变视角；曲面几何测试覆盖侧面、斜上和俯视。 |
-| 最终花心朝向用户 | ✅ | 终点接近 88° 俯视，花瓣排列和花心可见。 |
-| 绽放与运镜同步 | ✅ | 聚焦期间展开；返回后恢复原保存的开放度，不覆盖作品数据。 |
-| 文字、作者信息浮现 | ✅ | 原文、昵称、时间和关键词显示正常，没有增加不透明大卡片。 |
-| Back to Garden 恢复 | ✅ | 普通聚焦和回放均能返回；原场景、作者属性和保存的开放度恢复。 |
-| 连续切换不同花朵 | ✅ | 从中文 Cup 花沿关联切换到英文 Tall 花成功，再收起关联并返回。2,700 组关联运动数值测试通过。 |
+| Smooth approach after clicking | Complete | Planted and demo flowers entered an approximately two-second focus transition. |
+| Camera rising from the side | Complete | A continuous camera path changes the view; geometry checks cover side, oblique, and overhead poses. |
+| Flower center facing the viewer | Complete | The final view is close to 88 degrees overhead, with the petal arrangement and center visible. |
+| Bloom coordinated with camera movement | Complete | The flower opens during focus. Returning restores its saved openness rather than overwriting the artwork. |
+| Soft text and author reveal | Complete | Original text, nickname, time, and keywords appear beside the flower without an opaque information card. |
+| Back to Garden | Complete | Normal focus and growth replay return to the garden and restore the saved scene and openness. |
+| Switching between flowers | Complete | Switching from a Cup flower to a related Tall flower worked, followed by hiding connections and returning. The motion suite passed 2,700 numerical cases. |
 
-### D 花朵之间的互动
+### D Interactions between flowers
 
-| 项目 | 状态 | 当前行为与实测结果 |
+| Item | Status | Current behavior and evidence |
 | --- | --- | --- |
-| Flower Connections 发光回应 | ✅ | 真实相似度驱动关联花的距离、光晕与响应强度。 |
-| Whisper 花粉／光点流动 | ✅ | 关联绘制和光点上限测试通过；实际关联场景可用。它是动画效果名称，没有新增单独按钮。 |
-| Resonance 连锁回应 | ⚠️ | 连续手部样本驱动多花摇摆、光点和 echo 的测试通过；真人手部扫过的现场手感尚待确认。 |
-| Garden Rearrangement 聚拢 | ✅ | Find Connections 将相关花从各自位置聚到焦点周围。 |
-| 不相关花弱化 | ✅ | 聚焦时外围退到背景；无关车票句没有进入家庭晚餐关联结果。 |
-| Reset Garden 恢复布局 | ✅ | Hide Connections／Back to Garden 承担恢复操作，没有另加 Reset 按钮。恢复的是进入关联前保存的位置，不撤销用户主动保存的摆放。 |
-| 从一朵继续探索另一朵 | ✅ | 点击聚拢的关联花可平滑切换，关联内容随焦点更新。 |
-| 拖近、融合、分开 | ✅ | 实际原生拖动关联花到主花，松手后保持双色融合；点击空白处分开。两条原文保留。 |
-| 融合后新句子 | 🔧 | 已有规则组合的新句子，能使用两条原文的细节；不是生成式大模型写作。 |
-| 花园中自由摆放 | ✅ | 自己的花拖动后保留位置且不误入聚焦；刷新后恢复。别人花只临时移动，返回与作者权限由本轮指针／后端测试覆盖。 |
+| Flower Connections glow | Complete | Real semantic similarity influences distance, glow, and response strength. |
+| Whisper or pollen flow | Complete | Connection drawing and particle-limit checks passed, and the browser connection scene worked. This is an animation behavior, not a separate button. |
+| Resonance chain | Partial | Continuous sample tests produced sway, light-point propagation, and echo across flowers. A live human hand sweeping across flowers still needs an in-person check. |
+| Garden Rearrangement | Complete | Find Connections gathers related flowers from their saved positions around the focused flower. |
+| Unrelated flowers recede | Complete | Surrounding flowers dim during focus. An unrelated train-ticket thought was excluded from family-dinner results. |
+| Reset or layout restoration | Complete | Hide Connections and Back to Garden restore the saved layout from before discovery. They do not undo a user's intentionally saved placement. No extra Reset button is required. |
+| Continuing to another flower | Complete | Clicking a gathered flower smoothly changes focus and updates its related content. |
+| Drag, merge, and separate | Complete | A native drag onto the main flower produced a persistent two-color fusion after release. Clicking open garden space separated the pair. Both originals remained visible. |
+| New fusion sentence | Rule based | Local composition rules combine specific details from the two thoughts. This is not writing from a generative language model. |
+| Repositioning in the garden | Complete | An author's flower stays at its released position and recovers after refresh without accidental focus. Other authors' flowers return after temporary movement; ownership and return behavior are covered by pointer and backend tests. |
 
-## 2 Body 本轮验收
+## 2 Body interaction verification
 
-| 项目 | 状态 | 测试范围 |
+| Item | Status | Test scope |
 | --- | --- | --- |
-| 主动开启摄像头 | ✅ | Chrome 中主动点击并选择仅本次授权；真实视频达到 320 × 240、readyState 4。 |
-| 真实模型加载 | ✅ | 本地 MediaPipe HandLandmarker 加载成功并进入 Show one hand to the camera 状态。没有使用假追踪替代模型。 |
-| 暂停、恢复、关闭 | ✅ | Pause 显示暂停并停止播放，Resume 重新进入追踪，Close 隐藏面板。代码和生命周期测试验证停止轨道及处理迟到结果。 |
-| 张掌开花、握拳合拢 | ⚠️ | 真实 21 点算法、连续开合与平滑测试通过；本轮没有真人在镜头前完成整套张掌／握拳演示。 |
-| 位置、速度与跨花回应 | ⚠️ | 12Hz 检测样本与 60Hz 绘制的模拟测试产生连锁光点与摇摆；不能代替实体摄像头手感验收。 |
-| 停留开花 | ⚠️ | 这是旧方案；按你后来的选择，现为张掌／握拳连续控制，不再混入自动停留增长。 |
-| 鼠标备用 | ✅ | 未授权的等待状态可暂停、关闭，随后仍能种花；本轮实际鼠标拖动 Grow 开花成功。拒绝／设备故障分支由代码和生命周期测试覆盖。 |
-| 不上传、不保存视频 | ✅ | 仅请求视频，音频关闭；帧送入本地推理，没有视频上传或录像保存路径。截图证据未保存摄像头画面。 |
+| User-initiated camera access | Complete | Chrome granted one-time permission. Real video reached 320 by 240 pixels and readyState 4. |
+| Real tracking model | Complete | The local MediaPipe HandLandmarker loaded and reached **Show one hand to the camera**. Tracking was not replaced by a mock model. |
+| Pause, resume, and close | Complete | Pause stopped playback, Resume restarted tracking, and Close hid the panel. Lifecycle tests and code checks cover track stopping and late results. |
+| Open palm to bloom and fist to close | Partial | The real 21-landmark algorithm, continuous openness mapping, and smoothing passed tests. No live human palm-to-fist sequence was performed in the November 24 audit. |
+| Position, speed, and cross-flower response | Partial | Simulated 12 Hz detector samples with 60 Hz drawing produced chained light points and sway. This does not certify physical hand feel. |
+| Dwell-to-bloom | Replaced design | The earlier dwell scheme was replaced by the user's chosen continuous palm-and-fist control. It is not mixed with automatic dwell growth. |
+| Mouse fallback | Complete | Camera permission waiting can be paused or closed, and planting still works. Native Grow dragging succeeded. Denial and device-failure paths are covered by lifecycle tests and code checks. |
+| Video privacy | Complete | The page requests video without audio. Frames feed local inference; there is no video-upload or recording path. Audit screenshots do not contain camera footage. |
 
-课堂演示时，在主持电脑使用 localhost 开启 Body。同一 Wi-Fi 的普通 HTTP 访客地址通常不能使用摄像头，访客保留鼠标操作。首次授权和首次本地模型加载应在正式演示前完成。
+For class, use localhost on the presenting computer for Body. Visitors using an ordinary LAN HTTP address generally need the mouse fallback. Allow camera access and load the local models before the live presentation.
 
-## 3 Week 1–11 对应情况
+## 3 Course themes and separate submissions
 
-本节沿用你本轮清单的 11 个主题编号。官方课表第 7 周为调课，因此 Spatial、Body、Metaphor、Level、Research 的实际课表周次依次为 8、9、10、11、12。
+The numbering below follows the project's eleven-theme checklist. In the official calendar, week 7 was a schedule adjustment, so Spatial, Body, Metaphor, Level, and Research correspond to calendar weeks 8, 9, 10, 11, and 12.
 
-| 主题 | 网站和技术状态 | 课程提交材料 |
+| Theme | Secret Garden implementation | Separate coursework and submission status |
 | --- | --- | --- |
-| 1 Rethink | ✅ 输入想法，转成可选择外观、可开合、可种植和操作的花；不是静态文字表单。 | 个人写作及提交状态未核验。 |
-| 2 Alignment | 🔧 预设联想展示；❌ 真实 AI 联想、逐词选择／编辑、建议影响外观尚未实现。✅ 用户可以手选外观。真实 AI 建议属于本轮 P2。 | GitHub 仓库及 Dashboard／Profile 链接未核验。老师将 API 作为可尝试路径，不要求购买付费服务。[Alignment](https://itpima.web.app/smf26/alignment-with-neural-networks/) |
-| 3 Implicit / Explicit | ✅ 每花独立 JSON，包含文字、作者、花型、颜色、尺寸、开放度、位置、时间和生长序列；对象可单独控制与重新组合；localStorage 恢复通过。✅ MediaPipe 为真实非文字 ML 输入，未自行训练模型。 | 对模型探索的博客说明需随个人材料核验。 |
-| 4 Time | ✅ 创建时间、持久保存、读取、Timeline、生长采样与回放、刷新恢复和清晰存储接口。❌ Firebase 实际练习未做；本地 SQLite 共享不等于完成 Firebase 指定技术。[Time](https://itpima.web.app/smf26/time/) | 如以现有替代实现交该练习，需要老师认可。 |
-| 5 Social | ✅ 昵称、独立作者身份、My Flowers、全作者场景／Timeline、作者详情、真实双浏览器共享与跨作者发现。⚠️ 没有单独 All Flowers 标签；当前 Timeline 提供全作品浏览。 | 公网访问、正式账号和跨设备身份恢复未实现。正式登录并非该周唯一身份方案。[Social](https://itpima.web.app/smf26/social/) |
-| 6 HyperSpace | ✅ 多语言 MiniLM 真实 384 维向量、余弦相似度、跨语言发现、关联强度与空间聚拢、随焦点切换、场景导航。❌ UMAP 降维布局未实现，当前四个聚拢方位加距离调整不是 UMAP。[HyperSpace](https://itpima.web.app/smf26/handles-in-hyperspace/) | UMAP 尝试与语义发现说明需单独补齐或与老师确认范围。 |
-| 7 Spatial | ✅ 三维花瓣、独立位置与深度、有限镜头、分层视差、俯视和用距离表达联系。背景仍为图像与遮罩层。 | 无须为此重做复杂自由漫游或所有模型。 |
-| 8 Body | ✅ 真实摄像头与模型、本地推理、生命周期和鼠标备用；⚠️ 真人动作手感待确认。连续手指开合替代原停留方案，模拟动作连锁测试通过。 | 可记录真人演示作为博客／课堂证据。 |
-| 9 Interface Metaphor | ✅ 种植表示表达，花表示作品，语义聚拢与融合帮助发现其他人，空间会围绕当前选择重组。 | 草图、概念说明及 Blog Writing 未核验。[Metaphor](https://itpima.web.app/smf26/interface-metaphor/) |
-| 10 Level | ❌ 项目中没有已运行的 Colab Notebook 或自行训练小模型成果。使用现成手追踪和 Embedding 推理不等于完成这项实验。可选择 Colab、ML5 小网络或 Tiny LLM 其中一条；插值是可选实验方向。[Level](https://itpima.web.app/smf26/level/) | Level: My Manifesto 提交状态未核验；无需新增网站页面。 |
-| 11 Research | ✅ 现有 Secret Garden 已是可继续推进的期末原型；❌ 项目资料中未提供 NotebookLM 运行成果或链接。 | 正式 Proposal 的形式、用户、动机、方法、计划、Prior Art、第一步，以及 NotebookLM 资料与 Dashboard 链接均需核验。[Research](https://itpima.web.app/smf26/research/) |
+| 1 Rethink | Complete: thoughts become flowers with editable appearance, continuous opening, planting, and interaction. | Personal writing and submission status have not been checked. |
+| 2 Alignment | Preset words are rule based. Generative associations, word editing, and AI-driven appearance suggestions are not implemented. Manual appearance choices work. | Source is uploaded to [the course repository](https://github.com/ZixuanLydia/Shares-Mindes/tree/secret-garden-v1/secret-garden). Dashboard or Profile submission is unverified. An API is an exploration route, not a requirement to buy a paid service. [Assignment](https://itpima.web.app/smf26/alignment-with-neural-networks/) |
+| 3 Implicit / Explicit | Complete: independent JSON includes thought, author, appearance, position, time, and growth. Objects can be controlled and combined. MediaPipe is real non-text ML input, using a pretrained model. | Blog documentation of the exploration remains a separate submission check. |
+| 4 Time | Complete: creation time, persistence, loading, Timeline, growth samples, replay, and refresh recovery. Secret Garden uses localStorage and SQLite, not Firebase. | The earlier [Week 4](https://github.com/ZixuanLydia/Shares-Mindes/blob/main/week-04/README.md) and [Week 5](https://github.com/ZixuanLydia/Shares-Mindes/blob/main/week-05/README.md) assignments already contain Firebase integration code and documented live-test results. Therefore, Firebase should not be marked absent from the student's entire coursework. Those older live services were not re-tested in this audit. [Time assignment](https://itpima.web.app/smf26/time/) |
+| 5 Social | Complete locally: independent author identities, nicknames, My Flowers, all-author Timeline, author details, real two-browser sharing, and discovery across authors. Timeline supplies all-artwork browsing without a separate All Flowers tab. | Public hosting, formal accounts, and cross-device identity recovery are not implemented in Secret Garden. Formal login is not the only identity route in the assignment. [Assignment](https://itpima.web.app/smf26/social/) |
+| 6 HyperSpace | Complete: real 384-dimensional multilingual embeddings, cosine ranking, cross-language discovery, similarity-driven gathering, and navigation through flower selection. UMAP is not implemented; four gathering slots with adjusted distances are not dimensional reduction. | The UMAP experiment or its agreed alternative remains to be documented. [Assignment](https://itpima.web.app/smf26/handles-in-hyperspace/) |
+| 7 Spatial | Complete: 3D petals, independent positions and depths, limited camera motion, parallax, overhead focus, and distance expressing connection strength. | The hybrid scene does not require a fully modeled free-roaming world. |
+| 8 Body | Camera access, real model loading, local inference, lifecycle controls, and mouse fallback passed. Live human hand feel remains unverified. | A real palm-and-fist demonstration can provide further class or blog evidence. |
+| 9 Interface Metaphor | Complete in the prototype: planting represents expression; flowers represent thoughts; semantic gathering and fusion help discover others. The space reorganizes around the current selection. | Concept sketches, explanation, and Blog Writing submission are unverified. [Assignment](https://itpima.web.app/smf26/interface-metaphor/) |
+| 10 Level | No executed Colab Notebook or self-trained small-model result is included in this project. Using pretrained tracking or embeddings does not itself complete that experiment. | Colab, an ML5 small network, or a Tiny LLM is a possible route; interpolation is an optional experiment direction. Manifesto submission is unverified. No additional website page is required. [Assignment](https://itpima.web.app/smf26/level/) |
+| 11 Research | Secret Garden is an existing final-project prototype that can be developed further. A NotebookLM result or link has not been supplied in the project materials. | Proposal, audience, motivation, method, plan, prior art, first step, NotebookLM sources, and Dashboard links require a separate submission check. [Assignment](https://itpima.web.app/smf26/research/) |
 
-生产版本没有自动填充 Mira／Leo 等虚构用户作品。中间的大花明确标记为 Demo flower。此次截图中的 Audit Mira、Demo Mira、Demo Leo 是独立测试数据库中的测试访客，提交包不附带这些作品或用户会话。
+The production app does not automatically populate fictional Mira or Leo artworks. Its central example is explicitly labeled **Demo flower**. Names such as Audit Mira, Demo Mira, and Demo Leo in audit evidence identify test visitors and a separate test database. The source package contains no private artwork database or user sessions.
 
-## 4 本轮实际测试与证据
+The app supports multilingual user writing. A person's original thought stays in its authored language; this is different from the language of the interface and documentation.
 
-### 浏览器操作
+## 4 Recorded test results and evidence
 
-- 单人版：欢迎、空输入校验、昵称、选型选色、Grow、60% 种植、刷新恢复、My Flowers、Timeline、详情、生长回放进度、返回、示范花播放／暂停／重置。
-- 鼠标：Grow 向上拖动 0% → 56%；场景中本人花重新摆放且不误入聚焦；悬停光晕渐入。
-- 两位独立访客：IAB 的 Demo Mira 和 Chrome 的 Demo Leo 分别种花；互相自动看到；本人列表为 1／2 朵，全作者时间轴为 3 朵；双方刷新后恢复。
-- 真实模型：中文全家晚餐回忆与英文家庭晚餐句匹配；同一花园里的无关车票句排除。
-- 关联：聚拢、发光、拖到主花融合、松手保持、原文保留、点击空白处分开、切换焦点、Hide Connections、Back to Garden。
-- 生长：已种下的本人花苞从详情继续到 10%，共享保存成功；普通聚焦展示不覆盖原开放度。
-- 摄像头：Chrome 真实开启、模型加载、暂停、恢复、关闭。未保存视频或摄像头截图。
-- 最终浏览器日志未见阻断流程的脚本错误或警告。
+### Browser flows tested on November 24
 
-### 本轮通过的自动测试
+- Local welcome, empty-input validation, nickname, form and color, Grow, planting at 60%, refresh recovery, My Flowers, Timeline, details, replay seeking, and returning.
+- Demo focus, play, pause, bloom stages, and reset.
+- Native Grow mouse dragging from 0% to 56%, own-flower repositioning without accidental focus, and soft hover feedback.
+- Two independent identities in an in-app browser and Chrome planted and automatically saw each other's flowers. My Flowers counts were one and two; the shared Timeline showed three. Both refreshes recovered the collection.
+- Real multilingual embeddings connected a family-dinner memory across languages while excluding an unrelated train-ticket sentence.
+- Gathering, light effects, native drag fusion, persistent merge after release, original-text retention, blank-space separation, focus switching, Hide Connections, and Back to Garden.
+- An existing own bud continued to 10% through keyboard control and saved to the shared garden. Display-only focus did not overwrite saved openness.
+- Real Chrome camera access, local model loading, pause, resume, and close, without saving video or camera screenshots.
+- Final browser logs contained no blocking script errors or warnings.
 
-14 个现有 Node 测试套件：intro、garden-history、shared-data、shared-ui、shared-scene、position-data、garden-drag、garden-position-scene、body-hand、body-continuity、semantic-connections、semantic-motion、semantic-focus、connection-fusion。
+### Automated checks passed on November 24
 
-后端 8 项 HTTP／SQLite 测试通过，覆盖两位作者、创建与读取、权限、重启恢复、并发、开放度、位置和输入校验；均使用临时数据库。另有 167 组曲面／相机／融合状态的有限坐标检查通过，不能将其解释为 FPS 压力测试。
+Fourteen existing Node suites passed: intro, garden-history, shared-data, shared-ui, shared-scene, position-data, garden-drag, garden-position-scene, body-hand, body-continuity, semantic-connections, semantic-motion, semantic-focus, and connection-fusion.
 
-| 截图 | 内容 |
+Eight backend HTTP and SQLite tests passed. They covered two authors, creation and reading, ownership, restart recovery, concurrency, openness, position, and input validation, using temporary databases. An additional 167 surface, camera, and fusion-pose checks completed 1,772,810 finite coordinate or gradient operations. Connection motion covered 2,700 cases. These are correctness checks, not flower-count FPS stress tests.
+
+| Evidence | View |
 | --- | --- |
-| [花园](<Secret Garden V1 garden.jpg>) | 保留现有玻璃花与分层背景 |
-| [俯视](<Secret Garden V1 focus.jpg>) | 花瓣排列与柔和文字 |
-| [关联](<Secret Garden V1 connections.jpg>) | 跨语言关联及空间聚拢 |
-| [融合](<Secret Garden V1 fusion.jpg>) | 双色交错、新句子与两条原文 |
-| [时间轴](<Secret Garden V1 timeline.jpg>) | 两位作者的真实测试作品 |
+| [Garden](<Secret Garden V1 garden.jpg>) | Glass flowers and layered background |
+| [Overhead focus](<Secret Garden V1 focus.jpg>) | Petal arrangement and text layout |
+| [Connections](<Secret Garden V1 connections.jpg>) | Semantic discovery and spatial gathering |
+| [Fusion](<Secret Garden V1 fusion.jpg>) | Two-color petals, combined sentence, and original thoughts |
+| [Timeline](<Secret Garden V1 timeline.jpg>) | Works from independent test visitors |
 
-### 测试边界
+Presentation screenshots were refreshed on November 25 with English example thoughts and English dates. The English planting, Timeline, focus, semantic discovery, and drag-fusion flow was checked again with two independent browser identities; the three affected history, shared-interface, and focus test suites also passed. Original user thoughts remain multilingual. The numerical measurements above are from the November 24 audit.
 
-本轮两位访客使用同一台电脑的两个独立浏览器，没有用两台实体 Wi-Fi 电脑验收；已通过真实双客户端和后端共享测试。单人版的浏览器测试使用本地静态 HTTP，直接 file 打开模式由相同代码和数据测试覆盖。真人手势手感、大数量花朵压力、其他操作系统和公开 HTTPS 访问不在本次通过范围。
+### Verification limits
 
-## 5 剩余工作及顺序
+The shared browser test used two independent browsers on one computer, not two physical Wi-Fi devices. Local-mode browser testing used static HTTP; direct-file behavior was covered by the same code and data tests. Live human gesture feel, large flower counts, other operating systems, and public HTTPS access remain outside the passed scope.
 
-| 优先级 | 内容 | 类型 | 对今天展示的影响 |
+## 5 Remaining work
+
+| Priority | Work | Category | Effect on V1 |
 | --- | --- | --- | --- |
-| 展示前 | 用实际演示电脑完成一次真人张掌／握拳和跨花移动，预热两个本地模型。 | 验收 | 影响 Body 现场稳定性；鼠标完整流程已可用。 |
-| 展示前 | 若安排双人演示，两台电脑使用同一服务地址，现场确认网络可达。 | 验收 | 同机双浏览器已经通过，远端访客使用鼠标备用。 |
-| 后续 | 明确最大作品量，针对几十／上百朵测量绘制与模型加载时间，再决定优化。 | 网站性能 | 三朵演示已通过，不能承诺任意规模。 |
-| P2 | 轻量真实文字联想、建议影响视觉、选择／修改建议。 | 网站功能 | 当前保留明确标注的预设词，不阻断 V1。 |
-| P2 | UMAP 布局实验并与现有聚拢动画衔接。 | 网站／技术实验 | 当前真实 Embedding 和语义聚拢可展示。 |
-| 课程 | 完成 Firebase 保存／读取练习，或取得老师对本地实现替代的认可。 | 技术实验 | 本地保存与共享已可用。需要另行授权云端配置。 |
-| 课程 | 运行并保留 Colab 或自行训练实验结果。 | Level 技术实验 | 独立完成，不必给花园增加按钮。 |
-| 课程 | 核验并补齐 GitHub、草图、博客、Manifesto、Proposal、NotebookLM 与 Dashboard 链接。 | 提交材料 | 影响课程提交完整性，不阻断当前本地网站。 |
-| 发布前 | 选择并授权托管平台、确定共享后端和持久存储、配置 HTTPS、验收跨网络访问与摄像头。 | 部署 | 当前没有公开网址，尚未进行这些操作。 |
+| Before presentation | Test a real palm-and-fist sequence and a cross-flower sweep on the presenting computer; preload both models. | Acceptance | Needed to confirm Body feel. The mouse flow already works. |
+| Before a two-device demo | Confirm both physical computers can reach the same LAN service address. | Acceptance | Two-browser sharing passed. LAN visitors retain mouse control. |
+| Later | Define the intended maximum flower count, measure performance, and optimize based on results. | Website performance | A three-flower demo passed; arbitrary scale is not certified. |
+| P2 | Real text suggestions, appearance mapping, and editing or selecting suggestions. | Website feature | Clearly labeled presets remain usable. |
+| P2 | UMAP layout experiment integrated with current gathering motion. | Website and technical experiment | Real embeddings and semantic gathering already work. |
+| Coursework | Relate earlier Week 4 and Week 5 Firebase evidence to the Time and Social requirements. | Course evidence | Secret Garden does not need an unrequested cloud setup for today's demonstration. |
+| Coursework | Complete and retain a Colab or self-training experiment. | Level experiment | Can be separate from the website. |
+| Coursework | Verify sketches, blog posts, Manifesto, Proposal, NotebookLM, and Dashboard links. | Submission materials | Determines assignment completeness, not local website operation. |
+| Before publication | Choose and authorize hosting, shared-backend storage, HTTPS, and cross-network acceptance tests. | Deployment | No public Secret Garden website exists yet. |
 
-## 6 运行与提交说明
+## 6 Running and submitting V1
 
-### 本地课堂展示
+### Local presentation
 
-保持整个项目目录完整，在 outputs 中双击 **Start Shared Garden.command**，使用它自动打开的 `http://127.0.0.1:8851/`。依赖 Python 3；演示期间保持终端窗口打开。原项目已有作品继续保存在原来的 `server/data/garden.sqlite3`。
+Keep the project structure intact. On macOS, double-click **outputs/Start Shared Garden.command** and keep its terminal window open. It requires Python 3 and opens `http://127.0.0.1:8851/`. Existing artworks remain in `server/data/garden.sqlite3`.
 
-另一台同 Wi-Fi 电脑打开终端打印的 **Invite on this Wi-Fi** 地址。浏览器身份按设备／浏览器保存，单改昵称不会创建第二个身份。同机演示两人应使用两个独立浏览器。
+Another computer on the same Wi-Fi uses the **Invite on this Wi-Fi** address printed in that terminal. Identity belongs to a browser. Changing a nickname does not create a second user; use independent browsers for a two-person demonstration on one computer.
 
-单人版可打开 outputs 中的 **Secret Garden.html**；本轮更稳定的测试方式是在项目根目录运行 `python3 -m http.server 8000 --bind 127.0.0.1 --directory outputs`，访问 `http://127.0.0.1:8000/Secret%20Garden.html`。直接文件、不同端口和共享版各自使用独立存储，原作品不会自动迁移。
+For single-user static preview, run `python3 -m http.server 8000 --bind 127.0.0.1 --directory outputs` from the project root, then open `http://127.0.0.1:8000/Secret%20Garden.html`. Direct-file mode, different ports, and shared mode have separate storage origins. Artworks are not automatically migrated between them.
 
-请保留 body-assets 和 semantic-assets，分别用于手部追踪与真实语义模型。字体与背景已嵌入 HTML。首次查找关联按需加载约 110 MB 的本地语义资源，之后可复用缓存。
+Keep **body-assets** and **semantic-assets** with the HTML. They provide real local hand tracking and semantic inference. Fonts and background are embedded. First semantic discovery loads approximately 110 MB of local resources; later uses can reuse cached sentence vectors.
 
-### 可提交文件
+### GitHub submission and live access
 
-**Secret Garden V1.zip** 提供网站、运行素材、Python 本地共享服务、构建源文件、测试和本审核报告。解压后保持目录结构，再按上述方式启动。包内没有个人作品数据库、会话凭据或自动生成的虚构用户数据；原项目中的现有作品保持原处。
+The project source is uploaded under `secret-garden` on the `secret-garden-v1` branch of [Shares-Mindes](https://github.com/ZixuanLydia/Shares-Mindes). That branch is now the repository's default view, so the original course repository link shows this project alongside the earlier assignments. The existing GitHub Pages site still publishes from `main`, which does not contain Secret Garden.
 
-可将 V1 用于本地课堂操作、录屏与原型文件提交。若老师需要点击链接远程访问，仍需要选择平台并授权正式部署。本轮没有发布、创建付费资源或修改云端权限。
+A teacher can browse the source, English instructions, audit, and screenshots on GitHub, or download the project and run it locally. Opening an HTML file in GitHub's file viewer displays source; it does not launch the interactive garden. Click-to-play remote access requires a separate authorized deployment.
+
+The V1 handoff package contains the app, local model resources, Python shared service, build sources, tests, and documentation. It excludes private databases and browser sessions. Preserve the directory structure after extraction.

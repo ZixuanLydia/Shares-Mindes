@@ -13,7 +13,7 @@ files = {
     "work/v1-audit-report.json",
     "server/shared_garden.py", "server/start.command", "server/test_shared_garden.py",
     "outputs/Secret Garden.html", "outputs/Start Shared Garden.command",
-    "outputs/使用与九周扩展.md", "outputs/Secret Garden V1 Audit.md",
+    "outputs/USER_GUIDE.md", "outputs/Secret Garden V1 Audit.md",
 }
 files.update("work/" + name for _, name in fragments)
 qa = json.loads((root / "work/v1-audit-report.json").read_text())
